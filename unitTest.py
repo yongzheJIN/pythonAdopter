@@ -9,6 +9,55 @@
 #         cursor.execute(querySentence)
 #         cursor.execute(querySentence2)
 #     connector.commit()
-print(" AND ".join(["id","age","client_id"]))
-where_clasuse = ' AND '.join([f"{item}=%s" for item in ["id","age","client_id"]])
-print(where_clasuse)
+import datetime
+
+from dataFusion.mysqlConnector.mysqlConnector import mysqlConnector
+
+
+def findColumnsOfsql(targetTable):
+    """
+    找到某一个表格的所哟字段，包括哪些是primary key
+    """
+    with mysqlConnector(ip="192.168.1.152", port=30633, user="root",
+                        password="Zkxbx@2011", database="xex_plus") as connector:
+        cursors = connector.cursor()
+        try:
+            sql = f"""DESCRIBE xex_plus.{targetTable}"""
+            cursors.execute(sql)
+            original_columns = []
+            key_columns = []
+            for i in cursors.fetchall():
+                original_columns.append(str(i[0]))
+                if str(i[3]) == "PRI":
+                    key_columns.append(i[0])
+            if len(key_columns) == 0:
+                print(targetTable)
+                return targetTable
+        except:
+            None
+            # print("没有检查", targetTable)
+        # return original_columns, key_columns
+
+
+# 查询所有的table
+def getALLtables():
+    """
+    获取所有的表格
+    """
+    with mysqlConnector(ip="192.168.1.152", port=30633, user="root",
+                        password="Zkxbx@2011", database="xex_plus") as connector:
+        cursors = connector.cursor()
+        sql = f"""SELECT table_name
+                    FROM information_schema.tables
+                    WHERE table_schema = 'xex_plus' AND table_type = 'BASE TABLE';"""
+        cursors.execute(sql)
+        original_columns = []
+        for i in cursors.fetchall():
+            original_columns.append(str(i[0]))
+        return original_columns
+
+
+# res = getALLtables()
+# for i in range(len(res)):
+#     findColumnsOfsql(res[i])
+print(f"现在是{datetime.datetime.now()}")

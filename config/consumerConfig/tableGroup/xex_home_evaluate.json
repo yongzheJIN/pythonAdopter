@@ -1,0 +1,21 @@
+{
+  "xex_home_evaluate": {
+    "primaryKey": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'"
+    },
+    "data": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'",
+      "evaluate_level": "evaluate_level",
+      "evaluate_info": "evaluate_info",
+      "evaluate_img": "evaluate_img",
+      "evaluate_voice": "evaluate_voice",
+      "evaluate_video": "evaluate_video",
+      "delflag": "delflag",
+      "create_time": "create_time",
+      "update_time": "update_time"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

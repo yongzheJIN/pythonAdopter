@@ -1,0 +1,23 @@
+{
+  "xp86_tem_assess_templet": {
+    "primaryKey": {
+      "template_id": "template_id"
+    },
+    "data": {
+      "template_id": "template_id",
+      "belong_user": "belong_user",
+      "create_user": "create_user",
+      "template_name": "template_name",
+      "template_stander": "template_stander",
+      "site_demand": "site_demand",
+      "templet_status": "templet_status",
+      "templet_type": "templet_type",
+      "start_time": "start_time",
+      "end_time": "end_time",
+      "remark": "remark",
+      "rate": "rate",
+      "isvalidate": "isvalidate"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

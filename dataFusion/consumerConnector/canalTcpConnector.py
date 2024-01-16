@@ -1,3 +1,5 @@
+import datetime
+
 from canal.client import Client
 from canal.protocol import EntryProtocol_pb2
 import time
@@ -5,7 +7,6 @@ import time
 from dataFusion.consumerConnector.common.commonFunction import organizedFunction
 from dataFusion.mysqlConnector.mysqlConnector import mysqlConnector
 
-SQLtime = 0
 class canalConnector:
     def __init__(self, canalhost, canalport, canaltopic, canalgroup, mysqlip, mysqlport, mysqluser, mysqlpassword,
                  mysqlpdatabase, filterCondition, canalusername=None, canalpassword=None, useReplace=False):
@@ -52,7 +53,7 @@ class canalConnector:
             raise ConnectionError(f"连接canal_失败{e}")
 
     # 可以自己写自己内部的插入、更新和删除操作
-    def listenToPort(self, funcInsert=None, funcUpdate=None, funcDelete=None, useReplace=False, mapAll=False):
+    def listenToPort(self, funcInsert=None, funcUpdate=None, funcDelete=None, useReplace=False, mapAll=False,schemaEvalution=False):
         """
         event_type：1 insert 2 update 3 delete
         参数说明
@@ -76,7 +77,6 @@ class canalConnector:
                             }):返回给你所有数据，你可以自己组装成sql
             useReplace是否把Insert中的Insert改成Replace语句(如果自己写了funcInsert这一条即不生效)
         """
-        global SQLtime
         while True:
             # 获取信息
             res = []
@@ -98,33 +98,45 @@ class canalConnector:
                 header = entry.header
                 database = header.schemaName
                 table = header.tableName
-                for row in row_change.rowDatas:
-                    format_data = dict()
-                    format_data['before'] = format_data['after'] = dict()
-                    format_data['primary_List'] = []
-                    # 获取数据修改前的完整要素
-                    for column in row.beforeColumns:
-                        format_data['before'][column.name] = column.value
-                        # 获取primaryKey List
-                        if column.isKey == True:
-                            format_data['primary_List'].append({"name": column.name,
-                                                                "value": column.value})
-                    # 获取数据修改后的完整要素
-                    for column in row.afterColumns:
-                        format_data['after'][column.name] = column.value if column.isNull == False else 'NULL'
-                    # 把数据组装起来传入处理逻辑
-                    data = dict(
-                        database=database,
-                        table=table,
-                        event_type=event_type,
-                        data=format_data,
-                    )
-                    # 把insert,update和delete的逻辑都放在一起
-                    res = organizedFunction(event_type=event_type, funcInsert=funcInsert, funcUpdate=funcUpdate,
-                                            funcDelete=funcDelete, table=table, InsertTableList=InsertTableList,
-                                            DeleteTableList=DeleteTableList,
-                                            data=data, useReplace=self.useReplace, mapAll=mapAll,res=res)
-                    SQLtime+=1
+                if event_type==5:
+                    if schemaEvalution:
+                        sql = row_change.sql.replace("\r","")
+                        sql = sql.replace("\n","")
+                        # 立即进行schema演绎
+                        with mysqlConnector(ip=self.mysqlip, port=self.mysqlport, user=self.mysqluser,
+                                            password=self.mysqlpassword,
+                                            database=self.mysqldatabase if not mapAll else database,fixDatabase=True) as connector:
+                            # 制作cursor操作对象
+                            cursor = connector.cursor()
+                            cursor.execute(sql)
+                        # # 成功之后递交我的ACK位置
+                else:
+                    for row in row_change.rowDatas:
+                        format_data = dict()
+                        format_data['before'] = format_data['after'] = dict()
+                        format_data['primary_List'] = []
+                        # 获取数据修改前的完整要素
+                        for column in row.beforeColumns:
+                            format_data['before'][column.name] = column.value
+                            # 获取primaryKey List
+                            if column.isKey == True:
+                                format_data['primary_List'].append({"name": column.name,
+                                                                    "value": column.value})
+                        # 获取数据修改后的完整要素
+                        for column in row.afterColumns:
+                            format_data['after'][column.name] = column.value if column.isNull == False else 'NULL'
+                        # 把数据组装起来传入处理逻辑
+                        data = dict(
+                            database=database,
+                            table=table,
+                            event_type=event_type,
+                            data=format_data,
+                        )
+                        # 把insert,update和delete的逻辑都放在一起
+                        res = organizedFunction(event_type=event_type, funcInsert=funcInsert, funcUpdate=funcUpdate,
+                                                funcDelete=funcDelete, table=table, InsertTableList=InsertTableList,
+                                                DeleteTableList=DeleteTableList,
+                                                data=data, useReplace=self.useReplace, mapAll=mapAll,res=res)
             if res:
                 try:
                     # 传入数据，如果数据消费成功递交ack位置如果失败把mysqlConnector 和canalClient rollback
@@ -133,16 +145,17 @@ class canalConnector:
                                         database=self.mysqldatabase) as connector:
                         # 制作cursor操作对象
                         cursor = connector.cursor()
-                        for i in res:
-                            cursor.execute(i[0], i[1])
+                        for i in range(len(res)):
+                            tempcurrent = i
+                            cursor.execute(res[i][0], res[i][1])
                         connector.commit()
                     # # 成功之后递交我的ACK位置
                     self.canalclient.ack(message_id=message["id"])
-                    print("事件提交成功", res)
+                    print(f"{datetime.datetime.now()}:事件提交成功", res[-1])
                     continue
                 except Exception as e:
                     print("---------------")
-                    print("失败回滚时间轴", e, res)
+                    print(f"{datetime.datetime.now()}:失败回滚时间轴", e, res[tempcurrent])
                     self.canalclient.rollback(message["id"])
                     break
             else:
@@ -150,8 +163,6 @@ class canalConnector:
             time.sleep(1)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        global SQLtime
-        print(f"本次一共消费SQL-{SQLtime}次")
         try:
             self.canalclient.disconnect()
         except Exception as e:

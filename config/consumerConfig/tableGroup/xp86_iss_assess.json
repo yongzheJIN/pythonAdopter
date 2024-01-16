@@ -1,0 +1,37 @@
+{
+  "xp86_iss_assess": {
+    "primaryKey": {
+      "assess_id": "assess_id"
+    },
+    "data": {
+      "assess_id": "assess_id",
+      "apply_id": "apply_id",
+      "template_id": "template_id",
+      "region_code": "region_code",
+      "local_code": "local_code",
+      "department_id": "department_id",
+      "institution_id": "institution_id",
+      "institution_name": "institution_name",
+      "assess_number": "assess_number",
+      "ins_root": "ins_root",
+      "assess_reason": "assess_reason",
+      "assess_statue": "assess_statue",
+      "assign_time": "assign_time",
+      "apply_people": "apply_people",
+      "apply_time": "apply_time",
+      "apply_date": "apply_date",
+      "apply_address": "apply_address",
+      "pos_lon": "pos_lon",
+      "pos_lat": "pos_lat",
+      "start_time": "start_time",
+      "end_time": "end_time",
+      "application_time": "application_time",
+      "backup_time": "backup_time",
+      "isvalidate": "isvalidate",
+      "assess_result": "assess_result",
+      "total_points": "total_points",
+      "rectification": "rectification"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

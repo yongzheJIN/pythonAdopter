@@ -121,7 +121,7 @@ class kettleRepairGenerate:
         with mysqlConnector(ip=self.originalSever, port=self.originalPort, user=self.originalUser,
                             password=self.originalPassword, database=self.originalDatabase) as connector:
             cursors = connector.cursor()
-            sql = f"""SELECT table_name FROM INFORMATION_SCHEMA.TABLES where table_schema = "xex_plus";"""
+            sql = f"""SELECT table_name FROM INFORMATION_SCHEMA.TABLES where table_schema = "xex_plus" AND table_type = 'BASE TABLE';"""
             cursors.execute(sql)
             original_columns = []
             for i in cursors.fetchall():

@@ -1,5 +1,6 @@
 {
   "serviceModel": "tcp",
-  "useReplace": false,
-  "mapAll": true
+  "useReplace": true,
+  "mapAll": true,
+  "schemaEvalution": true
 }

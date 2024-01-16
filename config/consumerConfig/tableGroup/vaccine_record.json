@@ -1,0 +1,34 @@
+{
+  "vaccine_record": {
+    "primaryKey": {
+      "id": "id",
+      "client_id": "'6045b8e82d8ec86e9263ae14'"
+    },
+    "data": {
+      "id": "id",
+      "client_id": "'6045b8e82d8ec86e9263ae14'",
+      "detection_id": "detection_id",
+      "name": "name",
+      "identity": "identity",
+      "age": "age",
+      "type": "type",
+      "vaccine_time": "vaccine_time",
+      "remark": "remark",
+      "job_title": "job_title",
+      "person_type": "person_type",
+      "test_address": "test_address",
+      "create_time": "create_time",
+      "update_time": "update_time",
+      "delflag": "delflag",
+      "institution_id": "institution_id",
+      "institution_name": "institution_name",
+      "institution_type": "institution_type",
+      "region_code": "region_code",
+      "vaccine_accessory": "vaccine_accessory",
+      "vaccine_times": "vaccine_times",
+      "state": "state",
+      "appoint_vaccine_time": "appoint_vaccine_time"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

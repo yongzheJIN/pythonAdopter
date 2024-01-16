@@ -2,11 +2,11 @@
   "person": {
     "primaryKey": {
       "id": "id",
-      "clientId": "'634f21fdsa234dsf'"
+      "clientId": "'6045b8e82d8ec86e9263ae14'"
     },
     "data": {
       "id": "id",
-      "clientId": "'634f21fdsa234dsf'",
+      "clientId": "'6045b8e82d8ec86e9263ae14'",
       "person_base_id": "person_base_id",
       "institution_id": "institution_id",
       "date_source": "date_source",
@@ -86,8 +86,20 @@
       "social_or_difficulty": "social_or_difficulty",
       "census_type": "census_type",
       "file_number": "file_number",
-      "is_jdlk": "is_jdlk"
+      "receipt_accessory": "receipt_accessory",
+      "attachment2": "attachment2",
+      "attachment3": "attachment3",
+      "attachment4": "attachment4",
+      "attachment_leave": "attachment_leave",
+      "is_jdlk": "is_jdlk",
+      "has_monitor": "has_monitor",
+      "eval_update_time": "eval_update_time",
+      "approval_kh": "approval_kh",
+      "approval_person": "approval_person",
+      "approval_kh_time": "approval_kh_time",
+      "kh_remark": "kh_remark",
+      "last_pg_date": "last_pg_date"
     },
-    "targetDatabase": "civil_admin"
+    "targetDatabase": "civil_admin_aq"
   }
 }

@@ -1,0 +1,32 @@
+{
+  "xex_home_visit": {
+    "primaryKey": {
+      "visit_id": "visit_id",
+      "client_id": "'6045b8e82d8ec86e9263ae14'"
+    },
+    "data": {
+      "visit_id": "visit_id",
+      "client_id": "'6045b8e82d8ec86e9263ae14'",
+      "visit_plan_id": "visit_plan_id",
+      "service_provider_id": "service_provider_id",
+      "service_object_id": "service_object_id",
+      "service_item_id": "service_item_id",
+      "nurse_id": "nurse_id",
+      "visit_state": "visit_state",
+      "is_delete": "is_delete",
+      "remark": "remark",
+      "plan_id": "plan_id",
+      "plan_visit_time": "plan_visit_time",
+      "real_visit_time": "real_visit_time",
+      "satisfaction_level": "satisfaction_level",
+      "visit_result": "visit_result",
+      "order_id": "order_id",
+      "no_visit_cause": "no_visit_cause",
+      "is_do_visit": "is_do_visit",
+      "visit_type": "visit_type",
+      "create_time": "create_time",
+      "update_time": "update_time"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

@@ -9,6 +9,7 @@ if __name__ == "__main__":
     with open("config/consumerConfig/wholeSetting.json", encoding="utf-8") as fp:
         wholeSetting = json.load(fp)
     if wholeSetting["serviceModel"] == "kafka":
+        print("开启KAFKA模式")
         with open("config/consumerConfig/kafka.json", encoding="utf-8") as fp:
             kafkaSetting = json.load(fp)
         with kafkaConnector(kakfkaHost=kafkaSetting['host'], kafkaPort=kafkaSetting["port"],
@@ -29,5 +30,5 @@ if __name__ == "__main__":
                             mysqlip=mysqlConfig['ip'], mysqlport=mysqlConfig['port'], mysqluser=mysqlConfig['user'],
                             mysqlpassword=mysqlConfig['password'],
                             mysqlpdatabase=mysqlConfig['database'], canalusername=None, canalpassword=None,
-                            useReplace=False,filterCondition=canalSetting["filterCondition"]) as resummer:
-            resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'])
+                            useReplace=wholeSetting["useReplace"],filterCondition=canalSetting["filterCondition"]) as resummer:
+            resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'],schemaEvalution=wholeSetting['schemaEvalution'])

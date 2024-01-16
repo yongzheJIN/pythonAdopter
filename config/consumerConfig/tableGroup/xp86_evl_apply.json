@@ -1,0 +1,18 @@
+{
+  "xp86_evl_apply": {
+    "primaryKey": {
+      "apply_id": "apply_id"
+    },
+    "data": {
+      "apply_id": "apply_id",
+      "person_id": "person_id",
+      "apply_pk": "apply_pk",
+      "registor": "registor",
+      "person_name": "person_name",
+      "person_num": "person_num",
+      "apply_time": "apply_time",
+      "isvalidate": "isvalidate"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

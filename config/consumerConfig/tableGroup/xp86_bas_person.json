@@ -1,0 +1,23 @@
+{
+  "xp86_bas_person": {
+    "primaryKey": {
+      "person_id": "person_id"
+    },
+    "data": {
+      "person_id": "person_id",
+      "attach_id": "attach_id",
+      "sex_code": "sex_code",
+      "nation_code": "nation_code",
+      "institution_id": "institution_id",
+      "department_id": "department_id",
+      "source": "source",
+      "person_name": "person_name",
+      "person_num": "person_num",
+      "ins_name": "ins_name",
+      "region_code": "region_code",
+      "create_time": "create_time",
+      "isvalidate": "isvalidate"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

@@ -2,11 +2,11 @@
   "institution": {
     "primaryKey": {
       "id": "id",
-      "clientId": "'634f21fdsa234dsf'"
+      "clientId": "'6045b8e82d8ec86e9263ae14'"
     },
     "data": {
       "id": "id",
-      "clientId": "'634f21fdsa234dsf'",
+      "clientId": "'6045b8e82d8ec86e9263ae14'",
       "institution_name": "institution_name",
       "institution_phone": "institution_phone",
       "institution_number": "institution_number",
@@ -146,8 +146,14 @@
       "is_medication": "is_medication",
       "is_care": "is_care",
       "is_record": "is_record",
-      "home_type": "home_type"
+      "principal_gender": "principal_gender",
+      "principal_age": "principal_age",
+      "principal_standard_culture": "principal_standard_culture",
+      "stop_service_time": "stop_service_time",
+      "stop_reason": "stop_reason",
+      "stop_flag": "stop_flag",
+      "service_year_timer": "service_year_timer"
     },
-    "targetDatabase": "civil_admin"
+    "targetDatabase": "civil_admin_aq"
   }
 }

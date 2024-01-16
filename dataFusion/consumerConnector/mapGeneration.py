@@ -26,10 +26,12 @@ class mapConfigGeneration:
 
     def __enter__(self):
         # 验证服务器连接可否
-        with mysqlConnector(ip=self.targetHost, port=self.targetPort, user=self.targetUser, password=self.targetPassword,
+        with mysqlConnector(ip=self.targetHost, port=self.targetPort, user=self.targetUser,
+                            password=self.targetPassword,
                             database=self.targetDatabase):
             print("目标库测试连接成功")
-        with mysqlConnector(ip=self.originHost, port=self.originPort, user=self.originUser, password=self.originPassword,
+        with mysqlConnector(ip=self.originHost, port=self.originPort, user=self.originUser,
+                            password=self.originPassword,
                             database=self.originDatabase):
             print("源库测试连接成功")
 
@@ -91,19 +93,19 @@ class mapConfigGeneration:
                     },
                     'targetDatabase': self.targetDatabase
                 }
-                columns,primaryKey = self.getTableStructure(1, table)
+                columns, primaryKey = self.getTableStructure(1, table)
                 for i in columns:
-                    if i=="client_id" or i=="clientId" or i=="ClientId" or i=="Clientid":
-                        res[table]["data"][i] = "'634f21fdsa234dsf'"
+                    if i == "client_id" or i == "clientId" or i == "ClientId" or i == "Clientid":
+                        res[table]["data"][i] = "'6045b8e82d8ec86e9263ae14'"
                     else:
                         res[table]["data"][i] = i
                 for i in primaryKey:
-                    if i=="client_id" or i=="clientId" or i=="ClientId" or i=="Clientid":
-                        res[table]["primaryKey"][i] = "'634f21fdsa234dsf'"
+                    if i == "client_id" or i == "clientId" or i == "ClientId" or i == "Clientid":
+                        res[table]["primaryKey"][i] = "'6045b8e82d8ec86e9263ae14'"
                     else:
                         res[table]["primaryKey"][i] = i
-                with open(f'..\\..\\config\\consumerConfig\\tableGroup\\{table}.json','w') as fp:
-                    json.dump(res, fp,indent=2)
+                with open(f'..\\..\\config\\consumerConfig\\tableGroup\\{table}.json', 'w') as fp:
+                    json.dump(res, fp, indent=2)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_type:
@@ -112,18 +114,17 @@ class mapConfigGeneration:
 
 if __name__ == "__main__":
     mapGeneratation = mapConfigGeneration(
-        targetHost="192.168.205.250",
-        targetPort=3306,
+        targetHost="220.179.5.197",
+        targetPort=8689,
         targetUser="root",
-        targetPassword="zkxbx@2011",
-        targetDatabase="civil_admin",
+        targetPassword="Zkxbx@2011",
+        targetDatabase="civil_admin_aq",
 
-        originHost="192.168.205.250",
+        originHost="220.179.5.197",
         originPort=3306,
         originUser="root",
-        originPassword="zkxbx@2011",
+        originPassword="Zkxbx@2011",
         originDatabase="xex_plus",
-
-        tables=["employee","institution_plus_st","institution_plus","institution","person_base","person"]
+        tables=["government_buys_services_apply"]
     )
     mapGeneratation.generateFile(1)

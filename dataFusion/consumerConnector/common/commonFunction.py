@@ -24,8 +24,6 @@ def organizedFunction(event_type, funcInsert, funcUpdate, funcDelete, table, Ins
                 res.append(current)
             else:
                 time+=1
-                print(f"--------触发融合次数{time}")
-                print(time)
                 # 获取表在 InsertTableList 中的索引
                 index = InsertTableList["index"][InsertTableList['table'].index(table)]
 
@@ -59,6 +57,8 @@ def organizedFunction(event_type, funcInsert, funcUpdate, funcDelete, table, Ins
             current = __indicationDeleteFunction(data) if not funcDelete else funcDelete(data)
         if current != []:
             res.append(current)
+    else:
+        print('--------------------')
     return res
 
 
@@ -84,7 +84,6 @@ def __defaultInsertFunction(data, useReplace):
     # 去除结尾的","
     rescolumns = rescolumns[:-1]
     resvalues = resvalues[:-1]
-
     if useReplace:
         insert_sql = f"REPLACE INTO {database}.{table} ({rescolumns}) VALUES({resvalues});"
     else:
@@ -101,7 +100,7 @@ def __indicationInsert(data, useReplace):
     if os.path.exists(f"config/consumerConfig/tableGroup/{data['table']}.json"):
         with open(f"config/consumerConfig/tableGroup/{data['table']}.json") as fp:
             mapConfig = json.load(fp)
-        table = data['table']
+        table = list(mapConfig.keys())[0]
         database = data['database'] if bool(mapConfig[table].get("targetDatabase", -1) == -1) else mapConfig[table].get(
             "targetDatabase")
         rescolumns = ""
@@ -187,13 +186,13 @@ def __defaultUpdateFunction(data, useReplace):
 def __indicationUpdateFunction(data, useReplace):
     # 判断对象是不是单引号包裹
     pattern = re.compile(r"^'.*'$")
-    table = data['table']
     rescolumns = ""
     resvalues = ""
     query_values = []
     if os.path.exists(f"config/consumerConfig/tableGroup/{data['table']}.json"):
         with open(f"config/consumerConfig/tableGroup/{data['table']}.json") as fp:
             mapConfig = json.load(fp)
+        table = list(mapConfig.keys())[0]
         database = data['database'] if bool(mapConfig[table].get("targetDatabase", -1) == -1) else mapConfig[table].get(
             "targetDatabase")
         # 采取了replace模式
@@ -215,7 +214,7 @@ def __indicationUpdateFunction(data, useReplace):
             return [update_sql, query_values]
         # 没有采取replace模式
         else:
-            database = data['database'] if bool(mapConfig[data['table']].get("targetDatabase", -1) == -1) else \
+            database = data['database'] if bool(mapConfig[table].get("targetDatabase", -1) == -1) else \
                 mapConfig[data['table']].get("targetDatabase")
             set_clause = ""
             query_values = []
@@ -249,7 +248,7 @@ def __defaultDeleteFunction(data):
     database = data['database']
     primary_list = data['data']['primary_List']
     table = data['table']
-    where_clasuse = ' AND '.join([f"{item['name']} = %s" for item in primary_list])
+    where_clasuse = ' AND '.join([f"‘{item['name']}’ = %s" for item in primary_list])
     delete_sql = f"DELETE from {database}.{table} where {where_clasuse};"
     return [delete_sql, [i['value'] for i in primary_list]]
 
@@ -262,6 +261,7 @@ def __indicationDeleteFunction(data):
     if os.path.exists(f"config/consumerConfig/tableGroup/{table}.json"):
         with open(f"config/consumerConfig/tableGroup/{table}.json") as fp:
             mapConfig = json.load(fp)
+        table = list(mapConfig.keys())[0]
         database = data['database'] if bool(mapConfig[table].get("targetDatabase", -1) == -1) else mapConfig[table].get(
             "targetDatabase")
         where_clasuse = ' AND '.join(

@@ -1,0 +1,33 @@
+{
+  "inelder_health": {
+    "primaryKey": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'"
+    },
+    "data": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'",
+      "elder_vision": "elder_vision",
+      "elder_hearing": "elder_hearing",
+      "elder_pulse": "elder_pulse",
+      "elder_pressure": "elder_pressure",
+      "elder_drugallergy": "elder_drugallergy",
+      "elder_medicalhistory": "elder_medicalhistory",
+      "hospital": "hospital",
+      "doctor": "doctor",
+      "hosp_phone": "hosp_phone",
+      "mainillness": "mainillness",
+      "checkId": "checkId",
+      "evaluateId": "evaluateId",
+      "person_id": "person_id",
+      "delflag": "delflag",
+      "create_time": "create_time",
+      "update_time": "update_time",
+      "institution_id": "institution_id",
+      "food_allergy": "food_allergy",
+      "dislike": "dislike",
+      "diagnostic_results": "diagnostic_results"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

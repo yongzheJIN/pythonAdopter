@@ -2,11 +2,11 @@
   "person_base": {
     "primaryKey": {
       "id": "id",
-      "clientId": "'634f21fdsa234dsf'"
+      "clientId": "'6045b8e82d8ec86e9263ae14'"
     },
     "data": {
       "id": "id",
-      "clientId": "'634f21fdsa234dsf'",
+      "clientId": "'6045b8e82d8ec86e9263ae14'",
       "name": "name",
       "identity": "identity",
       "identity_type": "identity_type",
@@ -103,6 +103,6 @@
       "smart_home_device_number": "smart_home_device_number",
       "is_purpose_sign": "is_purpose_sign"
     },
-    "targetDatabase": "civil_admin"
+    "targetDatabase": "civil_admin_aq"
   }
 }

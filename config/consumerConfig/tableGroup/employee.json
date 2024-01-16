@@ -2,11 +2,11 @@
   "employee": {
     "primaryKey": {
       "id": "id",
-      "clientId": "'634f21fdsa234dsf'"
+      "clientId": "'6045b8e82d8ec86e9263ae14'"
     },
     "data": {
       "id": "id",
-      "clientId": "'634f21fdsa234dsf'",
+      "clientId": "'6045b8e82d8ec86e9263ae14'",
       "code": "code",
       "name": "name",
       "gender": "gender",
@@ -84,8 +84,9 @@
       "graduation_school": "graduation_school",
       "cert_date": "cert_date",
       "cert_organ": "cert_organ",
-      "cert_info": "cert_info"
+      "cert_info": "cert_info",
+      "parent_type": "parent_type"
     },
-    "targetDatabase": "civil_admin"
+    "targetDatabase": "civil_admin_aq"
   }
 }

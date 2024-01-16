@@ -1,0 +1,21 @@
+{
+  "device_gps_msg": {
+    "primaryKey": {
+      "id": "id",
+      "client_id": "'6045b8e82d8ec86e9263ae14'"
+    },
+    "data": {
+      "id": "id",
+      "client_id": "'6045b8e82d8ec86e9263ae14'",
+      "device_id": "device_id",
+      "status": "status",
+      "lat": "lat",
+      "lng": "lng",
+      "msg_data": "msg_data",
+      "code": "code",
+      "rpt_time": "rpt_time",
+      "delflag": "delflag"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

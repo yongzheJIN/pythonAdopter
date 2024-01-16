@@ -1,0 +1,37 @@
+{
+  "activity_manager": {
+    "primaryKey": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'"
+    },
+    "data": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'",
+      "name": "name",
+      "start_time": "start_time",
+      "end_time": "end_time",
+      "activitytitle_id": "activitytitle_id",
+      "crowd_person": "crowd_person",
+      "person_count": "person_count",
+      "pay_money": "pay_money",
+      "dress": "dress",
+      "hold_person": "hold_person",
+      "hold_phone": "hold_phone",
+      "news": "news",
+      "state": "state",
+      "institution_id": "institution_id",
+      "delflag": "delflag",
+      "create_time": "create_time",
+      "update_time": "update_time",
+      "summary_state": "summary_state",
+      "summary_title": "summary_title",
+      "summary_image": "summary_image",
+      "summary_news": "summary_news",
+      "image": "image",
+      "role": "role",
+      "result": "result",
+      "integral": "integral"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

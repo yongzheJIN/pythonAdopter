@@ -1,0 +1,20 @@
+{
+  "card_type": {
+    "primaryKey": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'"
+    },
+    "data": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'",
+      "name": "name",
+      "delflag": "delflag",
+      "create_time": "create_time",
+      "update_time": "update_time",
+      "description": "description",
+      "institution_id": "institution_id",
+      "is_clean": "is_clean"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

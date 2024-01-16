@@ -1,0 +1,24 @@
+{
+  "nurse_level": {
+    "primaryKey": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'"
+    },
+    "data": {
+      "id": "id",
+      "clientId": "'6045b8e82d8ec86e9263ae14'",
+      "name": "name",
+      "nurse_object": "nurse_object",
+      "nurse_price": "nurse_price",
+      "level_desibe": "level_desibe",
+      "institution_id": "institution_id",
+      "create_time": "create_time",
+      "update_time": "update_time",
+      "delflag": "delflag",
+      "date_source": "date_source",
+      "xbx_id": "xbx_id",
+      "color_select": "color_select"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

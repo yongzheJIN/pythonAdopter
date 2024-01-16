@@ -1,0 +1,40 @@
+{
+  "xp86_evl_assess": {
+    "primaryKey": {
+      "assess_id": "assess_id"
+    },
+    "data": {
+      "assess_id": "assess_id",
+      "apply_id": "apply_id",
+      "template_id": "template_id",
+      "department_id": "department_id",
+      "sign_id": "sign_id",
+      "user_id": "user_id",
+      "institution_id": "institution_id",
+      "person_id": "person_id",
+      "region_code": "region_code",
+      "community_code": "community_code",
+      "assess_number": "assess_number",
+      "person_root": "person_root",
+      "assess_reason": "assess_reason",
+      "assess_statue": "assess_statue",
+      "assign_time": "assign_time",
+      "apply_people": "apply_people",
+      "apply_time": "apply_time",
+      "apply_date": "apply_date",
+      "apply_address": "apply_address",
+      "pos_lon": "pos_lon",
+      "pos_lat": "pos_lat",
+      "start_time": "start_time",
+      "end_time": "end_time",
+      "application_time": "application_time",
+      "backup_time": "backup_time",
+      "assess_result": "assess_result",
+      "final_result": "final_result",
+      "is_pay": "is_pay",
+      "payment": "payment",
+      "isvalidate": "isvalidate"
+    },
+    "targetDatabase": "civil_admin_aq"
+  }
+}

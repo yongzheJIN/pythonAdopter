@@ -2,9 +2,9 @@ import pymysql
 
 
 class mysqlConnector:
-    def __init__(self, ip, port, user, password, database):
+    def __init__(self, ip, port, user, password, database, fixDatabase=False):
         ## 类型判断
-        if not isinstance(port,int) and not ip:
+        if not isinstance(port, int) and not ip:
             raise TypeError("port必须是数字")
         # 数据库连接方式
         self.ip = ip
@@ -14,12 +14,17 @@ class mysqlConnector:
         self.database = database
         # 数据库持久连接
         self.connector: pymysql.connect
-
+        # 锁定数据库
+        self.fixDatabase = fixDatabase
 
     # 确保连接的关闭
     def __enter__(self):
         try:
-            self.connector = pymysql.connect(port=self.port, host=self.ip, user=self.user, password=self.password)
+            if self.fixDatabase:
+                self.connector = pymysql.connect(port=self.port, host=self.ip, user=self.user, password=self.password,
+                                                 database=self.database)
+            else:
+                self.connector = pymysql.connect(port=self.port, host=self.ip, user=self.user, password=self.password)
             return self.connector
         except Exception as e:
             raise ConnectionError(f"数据库连接失败,{e}")
