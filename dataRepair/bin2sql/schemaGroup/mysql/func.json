@@ -1,0 +1,13 @@
+{
+  "func": {
+    "primaryKey": [
+      "name"
+    ],
+    "columns": [
+      "name",
+      "ret",
+      "dl",
+      "type"
+    ]
+  }
+}

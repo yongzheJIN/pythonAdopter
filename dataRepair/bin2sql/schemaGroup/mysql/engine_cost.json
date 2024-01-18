@@ -1,0 +1,18 @@
+{
+  "engine_cost": {
+    "primaryKey": [
+      "engine_name",
+      "device_type",
+      "cost_name"
+    ],
+    "columns": [
+      "engine_name",
+      "device_type",
+      "cost_name",
+      "cost_value",
+      "last_update",
+      "comment",
+      "default_value"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "building": {
+    "primaryKey": [
+      "id",
+      "clientId"
+    ],
+    "columns": [
+      "id",
+      "clientId",
+      "name",
+      "sorting",
+      "institution_id",
+      "delflag",
+      "create_time",
+      "update_time",
+      "date_source",
+      "xbx_id"
+    ]
+  }
+}

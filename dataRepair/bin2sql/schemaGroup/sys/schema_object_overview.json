@@ -1,0 +1,10 @@
+{
+  "schema_object_overview": {
+    "primaryKey": [],
+    "columns": [
+      "db",
+      "object_type",
+      "count"
+    ]
+  }
+}

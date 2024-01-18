@@ -1,0 +1,11 @@
+{
+  "OPTIMIZER_TRACE": {
+    "primaryKey": [],
+    "columns": [
+      "QUERY",
+      "TRACE",
+      "MISSING_BYTES_BEYOND_MAX_MEM_SIZE",
+      "INSUFFICIENT_PRIVILEGES"
+    ]
+  }
+}

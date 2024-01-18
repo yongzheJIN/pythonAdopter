@@ -1,0 +1,11 @@
+{
+  "COLUMN_STATISTICS": {
+    "primaryKey": [],
+    "columns": [
+      "SCHEMA_NAME",
+      "TABLE_NAME",
+      "COLUMN_NAME",
+      "HISTOGRAM"
+    ]
+  }
+}

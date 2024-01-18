@@ -1,0 +1,32 @@
+{
+  "xex_home_service_object_gov": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "service_object_id",
+      "older_type_id",
+      "quantity",
+      "unit",
+      "planed",
+      "serviced",
+      "effect_date",
+      "expiry_date",
+      "create_time",
+      "update_time",
+      "region_id",
+      "money",
+      "hour",
+      "remain",
+      "data_source",
+      "subsidy_per_month",
+      "id",
+      "remain_money",
+      "subsidy_money_month",
+      "food_mode",
+      "food_limit",
+      "is_personalized",
+      "food_max_limit"
+    ]
+  }
+}

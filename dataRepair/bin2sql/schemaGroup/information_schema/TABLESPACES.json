@@ -1,0 +1,16 @@
+{
+  "TABLESPACES": {
+    "primaryKey": [],
+    "columns": [
+      "TABLESPACE_NAME",
+      "ENGINE",
+      "TABLESPACE_TYPE",
+      "LOGFILE_GROUP_NAME",
+      "EXTENT_SIZE",
+      "AUTOEXTEND_SIZE",
+      "MAXIMUM_SIZE",
+      "NODEGROUP_ID",
+      "TABLESPACE_COMMENT"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "USER_ATTRIBUTES": {
+    "primaryKey": [],
+    "columns": [
+      "USER",
+      "HOST",
+      "ATTRIBUTE"
+    ]
+  }
+}

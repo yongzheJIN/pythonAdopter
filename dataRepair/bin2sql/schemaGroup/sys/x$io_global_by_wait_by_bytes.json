@@ -1,0 +1,20 @@
+{
+  "x$io_global_by_wait_by_bytes": {
+    "primaryKey": [],
+    "columns": [
+      "event_name",
+      "total",
+      "total_latency",
+      "min_latency",
+      "avg_latency",
+      "max_latency",
+      "count_read",
+      "total_read",
+      "avg_read",
+      "count_write",
+      "total_written",
+      "avg_written",
+      "total_requested"
+    ]
+  }
+}

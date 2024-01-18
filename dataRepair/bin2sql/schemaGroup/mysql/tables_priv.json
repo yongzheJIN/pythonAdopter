@@ -1,0 +1,20 @@
+{
+  "tables_priv": {
+    "primaryKey": [
+      "Host",
+      "Db",
+      "User",
+      "Table_name"
+    ],
+    "columns": [
+      "Host",
+      "Db",
+      "User",
+      "Table_name",
+      "Grantor",
+      "Timestamp",
+      "Table_priv",
+      "Column_priv"
+    ]
+  }
+}

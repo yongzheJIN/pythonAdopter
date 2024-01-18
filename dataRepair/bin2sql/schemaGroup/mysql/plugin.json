@@ -1,0 +1,11 @@
+{
+  "plugin": {
+    "primaryKey": [
+      "name"
+    ],
+    "columns": [
+      "name",
+      "dl"
+    ]
+  }
+}

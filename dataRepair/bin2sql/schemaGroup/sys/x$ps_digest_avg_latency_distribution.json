@@ -1,0 +1,9 @@
+{
+  "x$ps_digest_avg_latency_distribution": {
+    "primaryKey": [],
+    "columns": [
+      "cnt",
+      "avg_us"
+    ]
+  }
+}

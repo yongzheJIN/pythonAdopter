@@ -1,0 +1,15 @@
+{
+  "global_grants": {
+    "primaryKey": [
+      "USER",
+      "HOST",
+      "PRIV"
+    ],
+    "columns": [
+      "USER",
+      "HOST",
+      "PRIV",
+      "WITH_GRANT_OPTION"
+    ]
+  }
+}

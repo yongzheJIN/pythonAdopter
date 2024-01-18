@@ -1,0 +1,16 @@
+{
+  "default_roles": {
+    "primaryKey": [
+      "HOST",
+      "USER",
+      "DEFAULT_ROLE_HOST",
+      "DEFAULT_ROLE_USER"
+    ],
+    "columns": [
+      "HOST",
+      "USER",
+      "DEFAULT_ROLE_HOST",
+      "DEFAULT_ROLE_USER"
+    ]
+  }
+}

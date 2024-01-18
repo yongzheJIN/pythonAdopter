@@ -1,0 +1,18 @@
+{
+  "user_summary_by_statement_type": {
+    "primaryKey": [],
+    "columns": [
+      "user",
+      "statement",
+      "total",
+      "total_latency",
+      "max_latency",
+      "lock_latency",
+      "cpu_latency",
+      "rows_sent",
+      "rows_examined",
+      "rows_affected",
+      "full_scans"
+    ]
+  }
+}

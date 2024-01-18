@@ -1,0 +1,11 @@
+{
+  "replication_group_configuration_version": {
+    "primaryKey": [
+      "name"
+    ],
+    "columns": [
+      "name",
+      "version"
+    ]
+  }
+}

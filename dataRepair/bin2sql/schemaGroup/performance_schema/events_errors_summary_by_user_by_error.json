@@ -1,0 +1,15 @@
+{
+  "events_errors_summary_by_user_by_error": {
+    "primaryKey": [],
+    "columns": [
+      "USER",
+      "ERROR_NUMBER",
+      "ERROR_NAME",
+      "SQL_STATE",
+      "SUM_ERROR_RAISED",
+      "SUM_ERROR_HANDLED",
+      "FIRST_SEEN",
+      "LAST_SEEN"
+    ]
+  }
+}

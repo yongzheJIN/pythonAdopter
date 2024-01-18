@@ -1,0 +1,10 @@
+{
+  "INNODB_VIRTUAL": {
+    "primaryKey": [],
+    "columns": [
+      "TABLE_ID",
+      "POS",
+      "BASE_POS"
+    ]
+  }
+}

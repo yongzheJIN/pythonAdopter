@@ -1,0 +1,13 @@
+{
+  "sys_config": {
+    "primaryKey": [
+      "variable"
+    ],
+    "columns": [
+      "variable",
+      "value",
+      "set_time",
+      "set_by"
+    ]
+  }
+}

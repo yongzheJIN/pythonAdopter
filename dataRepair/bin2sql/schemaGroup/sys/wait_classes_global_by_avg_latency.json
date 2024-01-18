@@ -1,0 +1,13 @@
+{
+  "wait_classes_global_by_avg_latency": {
+    "primaryKey": [],
+    "columns": [
+      "event_class",
+      "total",
+      "total_latency",
+      "min_latency",
+      "avg_latency",
+      "max_latency"
+    ]
+  }
+}

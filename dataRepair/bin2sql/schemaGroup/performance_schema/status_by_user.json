@@ -1,0 +1,10 @@
+{
+  "status_by_user": {
+    "primaryKey": [],
+    "columns": [
+      "USER",
+      "VARIABLE_NAME",
+      "VARIABLE_VALUE"
+    ]
+  }
+}

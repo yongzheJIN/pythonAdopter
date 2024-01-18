@@ -1,0 +1,11 @@
+{
+  "metrics": {
+    "primaryKey": [],
+    "columns": [
+      "Variable_name",
+      "Variable_value",
+      "Type",
+      "Enabled"
+    ]
+  }
+}

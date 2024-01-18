@@ -1,0 +1,18 @@
+{
+  "servers": {
+    "primaryKey": [
+      "Server_name"
+    ],
+    "columns": [
+      "Server_name",
+      "Host",
+      "Db",
+      "Username",
+      "Password",
+      "Port",
+      "Socket",
+      "Wrapper",
+      "Owner"
+    ]
+  }
+}

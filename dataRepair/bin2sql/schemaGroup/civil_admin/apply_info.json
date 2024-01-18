@@ -1,0 +1,26 @@
+{
+  "apply_info": {
+    "primaryKey": [
+      "id",
+      "clientId"
+    ],
+    "columns": [
+      "id",
+      "clientId",
+      "institution_id",
+      "person_base_id",
+      "apply_time",
+      "apply_type",
+      "approver",
+      "approve_time",
+      "approve_remark",
+      "creator",
+      "state",
+      "create_time",
+      "update_time",
+      "delflag",
+      "difficult_type",
+      "region_code"
+    ]
+  }
+}

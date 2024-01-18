@@ -1,0 +1,15 @@
+{
+  "approval_process": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "approver_id",
+      "approver",
+      "approval_index",
+      "create_time",
+      "update_time"
+    ]
+  }
+}

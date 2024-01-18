@@ -1,0 +1,12 @@
+{
+  "mutex_instances": {
+    "primaryKey": [
+      "OBJECT_INSTANCE_BEGIN"
+    ],
+    "columns": [
+      "NAME",
+      "OBJECT_INSTANCE_BEGIN",
+      "LOCKED_BY_THREAD_ID"
+    ]
+  }
+}

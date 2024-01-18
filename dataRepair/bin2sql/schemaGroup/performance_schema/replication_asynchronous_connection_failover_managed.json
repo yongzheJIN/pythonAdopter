@@ -1,0 +1,11 @@
+{
+  "replication_asynchronous_connection_failover_managed": {
+    "primaryKey": [],
+    "columns": [
+      "CHANNEL_NAME",
+      "MANAGED_NAME",
+      "MANAGED_TYPE",
+      "CONFIGURATION"
+    ]
+  }
+}

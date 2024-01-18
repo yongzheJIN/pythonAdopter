@@ -1,0 +1,15 @@
+{
+  "INNODB_COLUMNS": {
+    "primaryKey": [],
+    "columns": [
+      "TABLE_ID",
+      "NAME",
+      "POS",
+      "MTYPE",
+      "PRTYPE",
+      "LEN",
+      "HAS_DEFAULT",
+      "DEFAULT_VALUE"
+    ]
+  }
+}

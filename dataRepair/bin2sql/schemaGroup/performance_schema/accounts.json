@@ -1,0 +1,13 @@
+{
+  "accounts": {
+    "primaryKey": [],
+    "columns": [
+      "USER",
+      "HOST",
+      "CURRENT_CONNECTIONS",
+      "TOTAL_CONNECTIONS",
+      "MAX_SESSION_CONTROLLED_MEMORY",
+      "MAX_SESSION_TOTAL_MEMORY"
+    ]
+  }
+}

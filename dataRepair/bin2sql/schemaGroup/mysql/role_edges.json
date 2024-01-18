@@ -1,0 +1,17 @@
+{
+  "role_edges": {
+    "primaryKey": [
+      "FROM_HOST",
+      "FROM_USER",
+      "TO_HOST",
+      "TO_USER"
+    ],
+    "columns": [
+      "FROM_HOST",
+      "FROM_USER",
+      "TO_HOST",
+      "TO_USER",
+      "WITH_ADMIN_OPTION"
+    ]
+  }
+}

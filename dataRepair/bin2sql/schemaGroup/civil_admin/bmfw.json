@@ -1,0 +1,8 @@
+{
+  "bmfw": {
+    "primaryKey": [],
+    "columns": [
+      "identity"
+    ]
+  }
+}

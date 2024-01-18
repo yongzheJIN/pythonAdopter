@@ -1,0 +1,16 @@
+{
+  "socket_instances": {
+    "primaryKey": [
+      "OBJECT_INSTANCE_BEGIN"
+    ],
+    "columns": [
+      "EVENT_NAME",
+      "OBJECT_INSTANCE_BEGIN",
+      "THREAD_ID",
+      "SOCKET_ID",
+      "IP",
+      "PORT",
+      "STATE"
+    ]
+  }
+}

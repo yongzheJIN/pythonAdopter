@@ -1,0 +1,12 @@
+{
+  "test_timestamp": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "name",
+      "current"
+    ]
+  }
+}

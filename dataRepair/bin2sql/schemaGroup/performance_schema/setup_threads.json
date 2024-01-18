@@ -1,0 +1,15 @@
+{
+  "setup_threads": {
+    "primaryKey": [
+      "NAME"
+    ],
+    "columns": [
+      "NAME",
+      "ENABLED",
+      "HISTORY",
+      "PROPERTIES",
+      "VOLATILITY",
+      "DOCUMENTATION"
+    ]
+  }
+}

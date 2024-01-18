@@ -1,0 +1,23 @@
+{
+  "ndb_binlog_index": {
+    "primaryKey": [
+      "epoch",
+      "orig_server_id",
+      "orig_epoch"
+    ],
+    "columns": [
+      "Position",
+      "File",
+      "epoch",
+      "inserts",
+      "updates",
+      "deletes",
+      "schemaops",
+      "orig_server_id",
+      "orig_epoch",
+      "gci",
+      "next_position",
+      "next_file"
+    ]
+  }
+}

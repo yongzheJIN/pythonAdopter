@@ -30,5 +30,7 @@ if __name__ == "__main__":
                             mysqlip=mysqlConfig['ip'], mysqlport=mysqlConfig['port'], mysqluser=mysqlConfig['user'],
                             mysqlpassword=mysqlConfig['password'],
                             mysqlpdatabase=mysqlConfig['database'], canalusername=None, canalpassword=None,
-                            useReplace=wholeSetting["useReplace"],filterCondition=canalSetting["filterCondition"]) as resummer:
-            resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'],schemaEvalution=wholeSetting['schemaEvalution'])
+                            useReplace=wholeSetting["useReplace"],
+                            filterCondition=canalSetting["filterCondition"]) as resummer:
+            resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'],
+                                  schemaEvalution=wholeSetting['schemaEvalution'])

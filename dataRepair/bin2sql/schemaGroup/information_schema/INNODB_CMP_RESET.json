@@ -1,0 +1,13 @@
+{
+  "INNODB_CMP_RESET": {
+    "primaryKey": [],
+    "columns": [
+      "page_size",
+      "compress_ops",
+      "compress_ops_ok",
+      "compress_time",
+      "uncompress_ops",
+      "uncompress_time"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "assess_info_flow": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "assessInfoId",
+      "oldmanInfoId",
+      "status",
+      "reviewerFid",
+      "reviewerName",
+      "approveType",
+      "approveIndex",
+      "memo",
+      "create_time",
+      "update_time"
+    ]
+  }
+}

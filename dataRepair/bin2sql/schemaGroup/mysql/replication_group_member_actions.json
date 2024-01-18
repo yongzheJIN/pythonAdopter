@@ -1,0 +1,16 @@
+{
+  "replication_group_member_actions": {
+    "primaryKey": [
+      "name",
+      "event"
+    ],
+    "columns": [
+      "name",
+      "event",
+      "enabled",
+      "type",
+      "priority",
+      "error_handling"
+    ]
+  }
+}

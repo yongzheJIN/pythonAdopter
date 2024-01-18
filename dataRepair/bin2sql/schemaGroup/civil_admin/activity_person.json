@@ -1,0 +1,27 @@
+{
+  "activity_person": {
+    "primaryKey": [
+      "id",
+      "clientId"
+    ],
+    "columns": [
+      "id",
+      "clientId",
+      "activitymanager_id",
+      "oldperson_id",
+      "say",
+      "institution_id",
+      "delflag",
+      "create_time",
+      "update_time",
+      "state",
+      "rolec",
+      "sign_before",
+      "sign_after",
+      "regist_type",
+      "volunteer_id",
+      "point_status",
+      "state_change"
+    ]
+  }
+}

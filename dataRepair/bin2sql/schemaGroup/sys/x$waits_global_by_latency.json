@@ -1,0 +1,12 @@
+{
+  "x$waits_global_by_latency": {
+    "primaryKey": [],
+    "columns": [
+      "events",
+      "total",
+      "total_latency",
+      "avg_latency",
+      "max_latency"
+    ]
+  }
+}

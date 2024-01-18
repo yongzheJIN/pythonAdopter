@@ -1,0 +1,9 @@
+{
+  "TABLESPACES_EXTENSIONS": {
+    "primaryKey": [],
+    "columns": [
+      "TABLESPACE_NAME",
+      "ENGINE_ATTRIBUTE"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status_by_host": {
+    "primaryKey": [],
+    "columns": [
+      "HOST",
+      "VARIABLE_NAME",
+      "VARIABLE_VALUE"
+    ]
+  }
+}

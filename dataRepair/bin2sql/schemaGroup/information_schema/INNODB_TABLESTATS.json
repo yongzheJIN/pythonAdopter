@@ -1,0 +1,16 @@
+{
+  "INNODB_TABLESTATS": {
+    "primaryKey": [],
+    "columns": [
+      "TABLE_ID",
+      "NAME",
+      "STATS_INITIALIZED",
+      "NUM_ROWS",
+      "CLUST_INDEX_SIZE",
+      "OTHER_INDEX_SIZE",
+      "MODIFIED_COUNTER",
+      "AUTOINC",
+      "REF_COUNT"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "TABLE_CONSTRAINTS": {
+    "primaryKey": [],
+    "columns": [
+      "CONSTRAINT_CATALOG",
+      "CONSTRAINT_SCHEMA",
+      "CONSTRAINT_NAME",
+      "TABLE_SCHEMA",
+      "TABLE_NAME",
+      "CONSTRAINT_TYPE",
+      "ENFORCED"
+    ]
+  }
+}

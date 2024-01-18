@@ -1,0 +1,12 @@
+{
+  "file_instances": {
+    "primaryKey": [
+      "FILE_NAME"
+    ],
+    "columns": [
+      "FILE_NAME",
+      "EVENT_NAME",
+      "OPEN_COUNT"
+    ]
+  }
+}

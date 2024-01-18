@@ -1,0 +1,18 @@
+{
+  "prompttemplate": {
+    "primaryKey": [
+      "applicationID",
+      "stepNumber"
+    ],
+    "columns": [
+      "applicationID",
+      "stepNumber",
+      "type",
+      "role",
+      "createTime",
+      "updateTime",
+      "note",
+      "content"
+    ]
+  }
+}

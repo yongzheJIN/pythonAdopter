@@ -1,0 +1,32 @@
+{
+  "PARTITIONS": {
+    "primaryKey": [],
+    "columns": [
+      "TABLE_CATALOG",
+      "TABLE_SCHEMA",
+      "TABLE_NAME",
+      "PARTITION_NAME",
+      "SUBPARTITION_NAME",
+      "PARTITION_ORDINAL_POSITION",
+      "SUBPARTITION_ORDINAL_POSITION",
+      "PARTITION_METHOD",
+      "SUBPARTITION_METHOD",
+      "PARTITION_EXPRESSION",
+      "SUBPARTITION_EXPRESSION",
+      "PARTITION_DESCRIPTION",
+      "TABLE_ROWS",
+      "AVG_ROW_LENGTH",
+      "DATA_LENGTH",
+      "MAX_DATA_LENGTH",
+      "INDEX_LENGTH",
+      "DATA_FREE",
+      "CREATE_TIME",
+      "UPDATE_TIME",
+      "CHECK_TIME",
+      "CHECKSUM",
+      "PARTITION_COMMENT",
+      "NODEGROUP",
+      "TABLESPACE_NAME"
+    ]
+  }
+}

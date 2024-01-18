@@ -1,0 +1,33 @@
+{
+  "statement_analysis": {
+    "primaryKey": [],
+    "columns": [
+      "query",
+      "db",
+      "full_scan",
+      "exec_count",
+      "err_count",
+      "warn_count",
+      "total_latency",
+      "max_latency",
+      "avg_latency",
+      "lock_latency",
+      "cpu_latency",
+      "rows_sent",
+      "rows_sent_avg",
+      "rows_examined",
+      "rows_examined_avg",
+      "rows_affected",
+      "rows_affected_avg",
+      "tmp_tables",
+      "tmp_disk_tables",
+      "rows_sorted",
+      "sort_merge_passes",
+      "max_controlled_memory",
+      "max_total_memory",
+      "digest",
+      "first_seen",
+      "last_seen"
+    ]
+  }
+}

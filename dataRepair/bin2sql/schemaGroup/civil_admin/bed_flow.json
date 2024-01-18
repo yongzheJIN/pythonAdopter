@@ -1,0 +1,25 @@
+{
+  "bed_flow": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "client_id",
+      "institution_id",
+      "bed_id",
+      "person_id",
+      "p_name",
+      "bed_name",
+      "institution_name",
+      "idcard",
+      "age",
+      "start_time",
+      "end_time",
+      "type",
+      "delflag",
+      "create_time",
+      "update_time"
+    ]
+  }
+}

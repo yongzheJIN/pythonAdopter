@@ -1,0 +1,11 @@
+{
+  "res": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "bitresult"
+    ]
+  }
+}

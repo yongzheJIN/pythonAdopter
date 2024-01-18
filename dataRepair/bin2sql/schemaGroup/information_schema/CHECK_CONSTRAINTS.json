@@ -1,0 +1,11 @@
+{
+  "CHECK_CONSTRAINTS": {
+    "primaryKey": [],
+    "columns": [
+      "CONSTRAINT_CATALOG",
+      "CONSTRAINT_SCHEMA",
+      "CONSTRAINT_NAME",
+      "CHECK_CLAUSE"
+    ]
+  }
+}

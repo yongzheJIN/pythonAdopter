@@ -1,0 +1,19 @@
+{
+  "card_type": {
+    "primaryKey": [
+      "id",
+      "clientId"
+    ],
+    "columns": [
+      "id",
+      "clientId",
+      "name",
+      "delflag",
+      "create_time",
+      "update_time",
+      "description",
+      "institution_id",
+      "is_clean"
+    ]
+  }
+}

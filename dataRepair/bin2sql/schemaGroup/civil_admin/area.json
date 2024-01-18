@@ -1,0 +1,17 @@
+{
+  "area": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "area_name",
+      "region_code",
+      "parent_id",
+      "level_way",
+      "delflag",
+      "create_time",
+      "update_time"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "build_category": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "categoryName",
+      "type",
+      "fee",
+      "deflag",
+      "createTime",
+      "updateTime"
+    ]
+  }
+}

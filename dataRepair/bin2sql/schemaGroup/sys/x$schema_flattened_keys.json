@@ -1,0 +1,13 @@
+{
+  "x$schema_flattened_keys": {
+    "primaryKey": [],
+    "columns": [
+      "table_schema",
+      "table_name",
+      "index_name",
+      "non_unique",
+      "subpart_exists",
+      "index_columns"
+    ]
+  }
+}

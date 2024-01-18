@@ -1,0 +1,10 @@
+{
+  "check_test": {
+    "primaryKey": [],
+    "columns": [
+      "id",
+      "check_in_time",
+      "leave_time"
+    ]
+  }
+}

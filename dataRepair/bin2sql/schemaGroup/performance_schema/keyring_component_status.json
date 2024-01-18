@@ -1,0 +1,9 @@
+{
+  "keyring_component_status": {
+    "primaryKey": [],
+    "columns": [
+      "STATUS_KEY",
+      "STATUS_VALUE"
+    ]
+  }
+}

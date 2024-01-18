@@ -1,0 +1,13 @@
+{
+  "TABLE_CONSTRAINTS_EXTENSIONS": {
+    "primaryKey": [],
+    "columns": [
+      "CONSTRAINT_CATALOG",
+      "CONSTRAINT_SCHEMA",
+      "CONSTRAINT_NAME",
+      "TABLE_NAME",
+      "ENGINE_ATTRIBUTE",
+      "SECONDARY_ENGINE_ATTRIBUTE"
+    ]
+  }
+}

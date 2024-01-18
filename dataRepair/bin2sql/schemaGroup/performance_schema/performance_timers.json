@@ -1,0 +1,11 @@
+{
+  "performance_timers": {
+    "primaryKey": [],
+    "columns": [
+      "TIMER_NAME",
+      "TIMER_FREQUENCY",
+      "TIMER_RESOLUTION",
+      "TIMER_OVERHEAD"
+    ]
+  }
+}

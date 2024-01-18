@@ -1,0 +1,13 @@
+{
+  "x$waits_by_host_by_latency": {
+    "primaryKey": [],
+    "columns": [
+      "host",
+      "event",
+      "total",
+      "total_latency",
+      "avg_latency",
+      "max_latency"
+    ]
+  }
+}

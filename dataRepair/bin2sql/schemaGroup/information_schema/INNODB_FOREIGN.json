@@ -1,0 +1,12 @@
+{
+  "INNODB_FOREIGN": {
+    "primaryKey": [],
+    "columns": [
+      "ID",
+      "FOR_NAME",
+      "REF_NAME",
+      "N_COLS",
+      "TYPE"
+    ]
+  }
+}

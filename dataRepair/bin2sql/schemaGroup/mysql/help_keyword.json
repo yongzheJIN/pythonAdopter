@@ -1,0 +1,11 @@
+{
+  "help_keyword": {
+    "primaryKey": [
+      "help_keyword_id"
+    ],
+    "columns": [
+      "help_keyword_id",
+      "name"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "help_topic": {
+    "primaryKey": [
+      "help_topic_id"
+    ],
+    "columns": [
+      "help_topic_id",
+      "name",
+      "help_category_id",
+      "description",
+      "example",
+      "url"
+    ]
+  }
+}

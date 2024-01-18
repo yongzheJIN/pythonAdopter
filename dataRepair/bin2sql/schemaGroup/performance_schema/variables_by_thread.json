@@ -1,0 +1,13 @@
+{
+  "variables_by_thread": {
+    "primaryKey": [
+      "THREAD_ID",
+      "VARIABLE_NAME"
+    ],
+    "columns": [
+      "THREAD_ID",
+      "VARIABLE_NAME",
+      "VARIABLE_VALUE"
+    ]
+  }
+}

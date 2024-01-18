@@ -1,0 +1,9 @@
+{
+  "INNODB_FT_CONFIG": {
+    "primaryKey": [],
+    "columns": [
+      "KEY",
+      "VALUE"
+    ]
+  }
+}

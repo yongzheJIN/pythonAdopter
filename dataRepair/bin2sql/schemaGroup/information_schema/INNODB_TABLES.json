@@ -1,0 +1,17 @@
+{
+  "INNODB_TABLES": {
+    "primaryKey": [],
+    "columns": [
+      "TABLE_ID",
+      "NAME",
+      "FLAG",
+      "N_COLS",
+      "SPACE",
+      "ROW_FORMAT",
+      "ZIP_PAGE_SIZE",
+      "SPACE_TYPE",
+      "INSTANT_COLS",
+      "TOTAL_ROW_VERSIONS"
+    ]
+  }
+}

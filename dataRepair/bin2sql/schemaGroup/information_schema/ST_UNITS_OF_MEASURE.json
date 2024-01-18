@@ -1,0 +1,11 @@
+{
+  "ST_UNITS_OF_MEASURE": {
+    "primaryKey": [],
+    "columns": [
+      "UNIT_NAME",
+      "UNIT_TYPE",
+      "CONVERSION_FACTOR",
+      "DESCRIPTION"
+    ]
+  }
+}

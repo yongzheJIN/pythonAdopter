@@ -1,0 +1,13 @@
+{
+  "VIEW_ROUTINE_USAGE": {
+    "primaryKey": [],
+    "columns": [
+      "TABLE_CATALOG",
+      "TABLE_SCHEMA",
+      "TABLE_NAME",
+      "SPECIFIC_CATALOG",
+      "SPECIFIC_SCHEMA",
+      "SPECIFIC_NAME"
+    ]
+  }
+}

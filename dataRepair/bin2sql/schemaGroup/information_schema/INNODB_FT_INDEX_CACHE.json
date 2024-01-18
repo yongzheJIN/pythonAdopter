@@ -1,0 +1,13 @@
+{
+  "INNODB_FT_INDEX_CACHE": {
+    "primaryKey": [],
+    "columns": [
+      "WORD",
+      "FIRST_DOC_ID",
+      "LAST_DOC_ID",
+      "DOC_COUNT",
+      "DOC_ID",
+      "POSITION"
+    ]
+  }
+}

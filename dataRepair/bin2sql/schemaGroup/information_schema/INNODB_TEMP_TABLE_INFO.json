@@ -1,0 +1,11 @@
+{
+  "INNODB_TEMP_TABLE_INFO": {
+    "primaryKey": [],
+    "columns": [
+      "TABLE_ID",
+      "NAME",
+      "N_COLS",
+      "SPACE"
+    ]
+  }
+}

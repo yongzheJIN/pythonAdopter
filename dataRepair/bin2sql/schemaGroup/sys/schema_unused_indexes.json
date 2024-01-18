@@ -1,0 +1,10 @@
+{
+  "schema_unused_indexes": {
+    "primaryKey": [],
+    "columns": [
+      "object_schema",
+      "object_name",
+      "index_name"
+    ]
+  }
+}

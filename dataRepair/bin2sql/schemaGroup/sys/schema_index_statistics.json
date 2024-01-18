@@ -1,0 +1,18 @@
+{
+  "schema_index_statistics": {
+    "primaryKey": [],
+    "columns": [
+      "table_schema",
+      "table_name",
+      "index_name",
+      "rows_selected",
+      "select_latency",
+      "rows_inserted",
+      "insert_latency",
+      "rows_updated",
+      "update_latency",
+      "rows_deleted",
+      "delete_latency"
+    ]
+  }
+}

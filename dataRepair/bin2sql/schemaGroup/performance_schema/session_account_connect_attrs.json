@@ -1,0 +1,14 @@
+{
+  "session_account_connect_attrs": {
+    "primaryKey": [
+      "PROCESSLIST_ID",
+      "ATTR_NAME"
+    ],
+    "columns": [
+      "PROCESSLIST_ID",
+      "ATTR_NAME",
+      "ATTR_VALUE",
+      "ORDINAL_POSITION"
+    ]
+  }
+}

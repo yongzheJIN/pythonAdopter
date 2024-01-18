@@ -1,0 +1,12 @@
+{
+  "RESOURCE_GROUPS": {
+    "primaryKey": [],
+    "columns": [
+      "RESOURCE_GROUP_NAME",
+      "RESOURCE_GROUP_TYPE",
+      "RESOURCE_GROUP_ENABLED",
+      "VCPU_IDS",
+      "THREAD_PRIORITY"
+    ]
+  }
+}

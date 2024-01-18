@@ -1,0 +1,25 @@
+{
+  "x$schema_table_lock_waits": {
+    "primaryKey": [],
+    "columns": [
+      "object_schema",
+      "object_name",
+      "waiting_thread_id",
+      "waiting_pid",
+      "waiting_account",
+      "waiting_lock_type",
+      "waiting_lock_duration",
+      "waiting_query",
+      "waiting_query_secs",
+      "waiting_query_rows_affected",
+      "waiting_query_rows_examined",
+      "blocking_thread_id",
+      "blocking_pid",
+      "blocking_account",
+      "blocking_lock_type",
+      "blocking_lock_duration",
+      "sql_kill_blocking_query",
+      "sql_kill_blocking_connection"
+    ]
+  }
+}

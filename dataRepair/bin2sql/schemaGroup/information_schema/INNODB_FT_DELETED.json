@@ -1,0 +1,8 @@
+{
+  "INNODB_FT_DELETED": {
+    "primaryKey": [],
+    "columns": [
+      "DOC_ID"
+    ]
+  }
+}

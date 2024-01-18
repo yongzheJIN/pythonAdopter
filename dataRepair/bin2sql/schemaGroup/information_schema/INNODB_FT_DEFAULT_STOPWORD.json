@@ -1,0 +1,8 @@
+{
+  "INNODB_FT_DEFAULT_STOPWORD": {
+    "primaryKey": [],
+    "columns": [
+      "value"
+    ]
+  }
+}

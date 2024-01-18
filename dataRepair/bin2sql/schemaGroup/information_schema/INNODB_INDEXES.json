@@ -1,0 +1,15 @@
+{
+  "INNODB_INDEXES": {
+    "primaryKey": [],
+    "columns": [
+      "INDEX_ID",
+      "NAME",
+      "TABLE_ID",
+      "TYPE",
+      "N_FIELDS",
+      "PAGE_NO",
+      "SPACE",
+      "MERGE_THRESHOLD"
+    ]
+  }
+}

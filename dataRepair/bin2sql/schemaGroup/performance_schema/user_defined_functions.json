@@ -1,0 +1,14 @@
+{
+  "user_defined_functions": {
+    "primaryKey": [
+      "UDF_NAME"
+    ],
+    "columns": [
+      "UDF_NAME",
+      "UDF_RETURN_TYPE",
+      "UDF_TYPE",
+      "UDF_LIBRARY",
+      "UDF_USAGE_COUNT"
+    ]
+  }
+}

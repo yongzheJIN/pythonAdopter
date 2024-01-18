@@ -1,0 +1,12 @@
+{
+  "x$host_summary_by_file_io_type": {
+    "primaryKey": [],
+    "columns": [
+      "host",
+      "event_name",
+      "total",
+      "total_latency",
+      "max_latency"
+    ]
+  }
+}

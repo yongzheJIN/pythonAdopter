@@ -1,0 +1,12 @@
+{
+  "latest_file_io": {
+    "primaryKey": [],
+    "columns": [
+      "thread",
+      "file",
+      "latency",
+      "operation",
+      "requested"
+    ]
+  }
+}

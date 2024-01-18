@@ -1,0 +1,17 @@
+{
+  "schema_redundant_indexes": {
+    "primaryKey": [],
+    "columns": [
+      "table_schema",
+      "table_name",
+      "redundant_index_name",
+      "redundant_index_columns",
+      "redundant_index_non_unique",
+      "dominant_index_name",
+      "dominant_index_columns",
+      "dominant_index_non_unique",
+      "subpart_exists",
+      "sql_drop_index"
+    ]
+  }
+}

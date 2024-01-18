@@ -1,0 +1,11 @@
+{
+  "test": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "name"
+    ]
+  }
+}

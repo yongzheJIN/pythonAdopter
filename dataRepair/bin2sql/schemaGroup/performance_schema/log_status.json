@@ -1,0 +1,11 @@
+{
+  "log_status": {
+    "primaryKey": [],
+    "columns": [
+      "SERVER_UUID",
+      "LOCAL",
+      "REPLICATION",
+      "STORAGE_ENGINES"
+    ]
+  }
+}

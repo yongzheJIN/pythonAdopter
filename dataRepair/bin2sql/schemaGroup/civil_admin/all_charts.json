@@ -1,0 +1,16 @@
+{
+  "all_charts": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "name",
+      "img_url",
+      "type",
+      "delflag",
+      "create_time",
+      "update_time"
+    ]
+  }
+}

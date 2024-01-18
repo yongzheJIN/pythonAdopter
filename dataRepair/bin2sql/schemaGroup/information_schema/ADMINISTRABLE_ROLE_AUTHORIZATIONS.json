@@ -1,0 +1,16 @@
+{
+  "ADMINISTRABLE_ROLE_AUTHORIZATIONS": {
+    "primaryKey": [],
+    "columns": [
+      "USER",
+      "HOST",
+      "GRANTEE",
+      "GRANTEE_HOST",
+      "ROLE_NAME",
+      "ROLE_HOST",
+      "IS_GRANTABLE",
+      "IS_DEFAULT",
+      "IS_MANDATORY"
+    ]
+  }
+}

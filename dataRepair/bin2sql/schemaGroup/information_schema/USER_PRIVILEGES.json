@@ -1,0 +1,11 @@
+{
+  "USER_PRIVILEGES": {
+    "primaryKey": [],
+    "columns": [
+      "GRANTEE",
+      "TABLE_CATALOG",
+      "PRIVILEGE_TYPE",
+      "IS_GRANTABLE"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "approval_process_setting_info": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "subsidy_type",
+      "approval_type",
+      "approval_index",
+      "approverId",
+      "region_code"
+    ]
+  }
+}

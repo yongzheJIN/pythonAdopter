@@ -1,0 +1,11 @@
+{
+  "session_ssl_status": {
+    "primaryKey": [],
+    "columns": [
+      "thread_id",
+      "ssl_version",
+      "ssl_cipher",
+      "ssl_sessions_reused"
+    ]
+  }
+}

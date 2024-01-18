@@ -1,0 +1,13 @@
+{
+  "ENGINES": {
+    "primaryKey": [],
+    "columns": [
+      "ENGINE",
+      "SUPPORT",
+      "COMMENT",
+      "TRANSACTIONS",
+      "XA",
+      "SAVEPOINTS"
+    ]
+  }
+}

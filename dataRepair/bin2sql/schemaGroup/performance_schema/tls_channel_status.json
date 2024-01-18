@@ -1,0 +1,10 @@
+{
+  "tls_channel_status": {
+    "primaryKey": [],
+    "columns": [
+      "CHANNEL",
+      "PROPERTY",
+      "VALUE"
+    ]
+  }
+}

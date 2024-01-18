@@ -1,0 +1,10 @@
+{
+  "host_summary_by_file_io": {
+    "primaryKey": [],
+    "columns": [
+      "host",
+      "ios",
+      "io_latency"
+    ]
+  }
+}

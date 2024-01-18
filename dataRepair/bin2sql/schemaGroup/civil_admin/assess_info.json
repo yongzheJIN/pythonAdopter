@@ -1,0 +1,29 @@
+{
+  "assess_info": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "third_id",
+      "clientId",
+      "oldman_info_id",
+      "assess_id",
+      "xex_assess_id",
+      "ins_name",
+      "ins_number",
+      "region_code",
+      "name",
+      "identity",
+      "full_name",
+      "gender",
+      "statue",
+      "source",
+      "delflag",
+      "create_time",
+      "update_time",
+      "homein_support_type",
+      "final_result"
+    ]
+  }
+}

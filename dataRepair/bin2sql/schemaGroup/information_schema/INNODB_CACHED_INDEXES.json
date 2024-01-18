@@ -1,0 +1,10 @@
+{
+  "INNODB_CACHED_INDEXES": {
+    "primaryKey": [],
+    "columns": [
+      "SPACE_ID",
+      "INDEX_ID",
+      "N_CACHED_PAGES"
+    ]
+  }
+}

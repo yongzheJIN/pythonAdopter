@@ -1,0 +1,13 @@
+{
+  "replication_asynchronous_connection_failover": {
+    "primaryKey": [],
+    "columns": [
+      "CHANNEL_NAME",
+      "HOST",
+      "PORT",
+      "NETWORK_NAMESPACE",
+      "WEIGHT",
+      "MANAGED_NAME"
+    ]
+  }
+}

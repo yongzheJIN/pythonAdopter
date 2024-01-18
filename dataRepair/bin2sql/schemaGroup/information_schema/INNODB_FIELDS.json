@@ -1,0 +1,10 @@
+{
+  "INNODB_FIELDS": {
+    "primaryKey": [],
+    "columns": [
+      "INDEX_ID",
+      "NAME",
+      "POS"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "INNODB_TABLESPACES_BRIEF": {
+    "primaryKey": [],
+    "columns": [
+      "SPACE",
+      "NAME",
+      "PATH",
+      "FLAG",
+      "SPACE_TYPE"
+    ]
+  }
+}

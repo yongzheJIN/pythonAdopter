@@ -1,0 +1,19 @@
+{
+  "user_summary": {
+    "primaryKey": [],
+    "columns": [
+      "user",
+      "statements",
+      "statement_latency",
+      "statement_avg_latency",
+      "table_scans",
+      "file_ios",
+      "file_io_latency",
+      "current_connections",
+      "total_connections",
+      "unique_hosts",
+      "current_memory",
+      "total_memory_allocated"
+    ]
+  }
+}

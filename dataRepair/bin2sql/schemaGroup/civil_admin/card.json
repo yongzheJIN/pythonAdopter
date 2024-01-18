@@ -1,0 +1,23 @@
+{
+  "card": {
+    "primaryKey": [
+      "id",
+      "clientId"
+    ],
+    "columns": [
+      "id",
+      "clientId",
+      "old_person_id",
+      "card_type_id",
+      "card_no",
+      "cash_pledge",
+      "state",
+      "delflag",
+      "create_time",
+      "update_time",
+      "institution_id",
+      "date_source",
+      "xbx_id"
+    ]
+  }
+}

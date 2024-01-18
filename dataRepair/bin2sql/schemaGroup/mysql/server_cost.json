@@ -1,0 +1,14 @@
+{
+  "server_cost": {
+    "primaryKey": [
+      "cost_name"
+    ],
+    "columns": [
+      "cost_name",
+      "cost_value",
+      "last_update",
+      "comment",
+      "default_value"
+    ]
+  }
+}

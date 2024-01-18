@@ -1,0 +1,18 @@
+{
+  "PLUGINS": {
+    "primaryKey": [],
+    "columns": [
+      "PLUGIN_NAME",
+      "PLUGIN_VERSION",
+      "PLUGIN_STATUS",
+      "PLUGIN_TYPE",
+      "PLUGIN_TYPE_VERSION",
+      "PLUGIN_LIBRARY",
+      "PLUGIN_LIBRARY_VERSION",
+      "PLUGIN_AUTHOR",
+      "PLUGIN_DESCRIPTION",
+      "PLUGIN_LICENSE",
+      "LOAD_OPTION"
+    ]
+  }
+}

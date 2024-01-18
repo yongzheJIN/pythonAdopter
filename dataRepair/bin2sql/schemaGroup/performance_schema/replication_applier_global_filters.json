@@ -1,0 +1,11 @@
+{
+  "replication_applier_global_filters": {
+    "primaryKey": [],
+    "columns": [
+      "FILTER_NAME",
+      "FILTER_RULE",
+      "CONFIGURED_BY",
+      "ACTIVE_SINCE"
+    ]
+  }
+}

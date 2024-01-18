@@ -1,0 +1,13 @@
+{
+  "ST_SPATIAL_REFERENCE_SYSTEMS": {
+    "primaryKey": [],
+    "columns": [
+      "SRS_NAME",
+      "SRS_ID",
+      "ORGANIZATION",
+      "ORGANIZATION_COORDSYS_ID",
+      "DEFINITION",
+      "DESCRIPTION"
+    ]
+  }
+}

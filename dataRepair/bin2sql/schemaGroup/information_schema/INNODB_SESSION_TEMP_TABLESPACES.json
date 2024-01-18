@@ -1,0 +1,13 @@
+{
+  "INNODB_SESSION_TEMP_TABLESPACES": {
+    "primaryKey": [],
+    "columns": [
+      "ID",
+      "SPACE",
+      "PATH",
+      "SIZE",
+      "STATE",
+      "PURPOSE"
+    ]
+  }
+}

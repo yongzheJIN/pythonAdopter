@@ -1,0 +1,16 @@
+{
+  "setup_actors": {
+    "primaryKey": [
+      "HOST",
+      "USER",
+      "ROLE"
+    ],
+    "columns": [
+      "HOST",
+      "USER",
+      "ROLE",
+      "ENABLED",
+      "HISTORY"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "x$waits_by_user_by_latency": {
+    "primaryKey": [],
+    "columns": [
+      "user",
+      "event",
+      "total",
+      "total_latency",
+      "avg_latency",
+      "max_latency"
+    ]
+  }
+}

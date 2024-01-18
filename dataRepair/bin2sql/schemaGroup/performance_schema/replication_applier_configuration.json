@@ -1,0 +1,16 @@
+{
+  "replication_applier_configuration": {
+    "primaryKey": [
+      "CHANNEL_NAME"
+    ],
+    "columns": [
+      "CHANNEL_NAME",
+      "DESIRED_DELAY",
+      "PRIVILEGE_CHECKS_USER",
+      "REQUIRE_ROW_FORMAT",
+      "REQUIRE_TABLE_PRIMARY_KEY_CHECK",
+      "ASSIGN_GTIDS_TO_ANONYMOUS_TRANSACTIONS_TYPE",
+      "ASSIGN_GTIDS_TO_ANONYMOUS_TRANSACTIONS_VALUE"
+    ]
+  }
+}

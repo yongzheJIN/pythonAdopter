@@ -1,0 +1,16 @@
+{
+  "approval_process_setting": {
+    "primaryKey": [
+      "id"
+    ],
+    "columns": [
+      "id",
+      "subsidy_type",
+      "subsidy_name",
+      "approval_type",
+      "create_time",
+      "is_on",
+      "region_code"
+    ]
+  }
+}

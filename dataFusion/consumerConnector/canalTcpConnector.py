@@ -98,7 +98,7 @@ class canalConnector:
                 header = entry.header
                 database = header.schemaName
                 table = header.tableName
-                if event_type==5:
+                if event_type==5 or event_type==4:
                     if schemaEvalution:
                         sql = row_change.sql.replace("\r","")
                         sql = sql.replace("\n","")

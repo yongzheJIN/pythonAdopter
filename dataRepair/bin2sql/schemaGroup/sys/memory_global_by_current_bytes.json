@@ -1,0 +1,14 @@
+{
+  "memory_global_by_current_bytes": {
+    "primaryKey": [],
+    "columns": [
+      "event_name",
+      "current_count",
+      "current_alloc",
+      "current_avg_alloc",
+      "high_count",
+      "high_alloc",
+      "high_avg_alloc"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "keyring_keys": {
+    "primaryKey": [],
+    "columns": [
+      "KEY_ID",
+      "KEY_OWNER",
+      "BACKEND_KEY_ID"
+    ]
+  }
+}

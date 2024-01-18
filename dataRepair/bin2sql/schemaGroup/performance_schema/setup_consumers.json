@@ -1,0 +1,11 @@
+{
+  "setup_consumers": {
+    "primaryKey": [
+      "NAME"
+    ],
+    "columns": [
+      "NAME",
+      "ENABLED"
+    ]
+  }
+}

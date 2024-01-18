@@ -1,0 +1,14 @@
+{
+  "ST_GEOMETRY_COLUMNS": {
+    "primaryKey": [],
+    "columns": [
+      "TABLE_CATALOG",
+      "TABLE_SCHEMA",
+      "TABLE_NAME",
+      "COLUMN_NAME",
+      "SRS_NAME",
+      "SRS_ID",
+      "GEOMETRY_TYPE_NAME"
+    ]
+  }
+}

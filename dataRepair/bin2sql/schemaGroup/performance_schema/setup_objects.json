@@ -1,0 +1,12 @@
+{
+  "setup_objects": {
+    "primaryKey": [],
+    "columns": [
+      "OBJECT_TYPE",
+      "OBJECT_SCHEMA",
+      "OBJECT_NAME",
+      "ENABLED",
+      "TIMED"
+    ]
+  }
+}

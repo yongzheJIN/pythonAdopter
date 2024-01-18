@@ -1,0 +1,10 @@
+{
+  "SCHEMATA_EXTENSIONS": {
+    "primaryKey": [],
+    "columns": [
+      "CATALOG_NAME",
+      "SCHEMA_NAME",
+      "OPTIONS"
+    ]
+  }
+}

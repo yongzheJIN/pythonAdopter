@@ -1,0 +1,24 @@
+{
+  "INNODB_METRICS": {
+    "primaryKey": [],
+    "columns": [
+      "NAME",
+      "SUBSYSTEM",
+      "COUNT",
+      "MAX_COUNT",
+      "MIN_COUNT",
+      "AVG_COUNT",
+      "COUNT_RESET",
+      "MAX_COUNT_RESET",
+      "MIN_COUNT_RESET",
+      "AVG_COUNT_RESET",
+      "TIME_ENABLED",
+      "TIME_DISABLED",
+      "TIME_ELAPSED",
+      "TIME_RESET",
+      "STATUS",
+      "TYPE",
+      "COMMENT"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "INNODB_DATAFILES": {
+    "primaryKey": [],
+    "columns": [
+      "SPACE",
+      "PATH"
+    ]
+  }
+}

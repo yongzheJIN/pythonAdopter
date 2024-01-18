@@ -1,0 +1,17 @@
+{
+  "ROLE_COLUMN_GRANTS": {
+    "primaryKey": [],
+    "columns": [
+      "GRANTOR",
+      "GRANTOR_HOST",
+      "GRANTEE",
+      "GRANTEE_HOST",
+      "TABLE_CATALOG",
+      "TABLE_SCHEMA",
+      "TABLE_NAME",
+      "COLUMN_NAME",
+      "PRIVILEGE_TYPE",
+      "IS_GRANTABLE"
+    ]
+  }
+}

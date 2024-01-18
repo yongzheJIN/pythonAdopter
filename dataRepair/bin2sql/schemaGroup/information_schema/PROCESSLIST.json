@@ -1,0 +1,15 @@
+{
+  "PROCESSLIST": {
+    "primaryKey": [],
+    "columns": [
+      "ID",
+      "USER",
+      "HOST",
+      "DB",
+      "COMMAND",
+      "TIME",
+      "STATE",
+      "INFO"
+    ]
+  }
+}

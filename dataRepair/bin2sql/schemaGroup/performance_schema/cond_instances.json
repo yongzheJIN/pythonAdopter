@@ -1,0 +1,11 @@
+{
+  "cond_instances": {
+    "primaryKey": [
+      "OBJECT_INSTANCE_BEGIN"
+    ],
+    "columns": [
+      "NAME",
+      "OBJECT_INSTANCE_BEGIN"
+    ]
+  }
+}

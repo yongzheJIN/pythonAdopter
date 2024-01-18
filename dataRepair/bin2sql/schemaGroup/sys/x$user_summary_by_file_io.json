@@ -1,0 +1,10 @@
+{
+  "x$user_summary_by_file_io": {
+    "primaryKey": [],
+    "columns": [
+      "user",
+      "ios",
+      "io_latency"
+    ]
+  }
+}

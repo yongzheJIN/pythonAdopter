@@ -1,0 +1,11 @@
+{
+  "session_variables": {
+    "primaryKey": [
+      "VARIABLE_NAME"
+    ],
+    "columns": [
+      "VARIABLE_NAME",
+      "VARIABLE_VALUE"
+    ]
+  }
+}

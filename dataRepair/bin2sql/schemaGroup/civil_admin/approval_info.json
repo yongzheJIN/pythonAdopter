@@ -1,0 +1,18 @@
+{
+  "approval_info": {
+    "primaryKey": [
+      "id",
+      "clientId"
+    ],
+    "columns": [
+      "id",
+      "clientId",
+      "apply_id",
+      "approver",
+      "state",
+      "approve_remark",
+      "approval_step",
+      "create_time"
+    ]
+  }
+}

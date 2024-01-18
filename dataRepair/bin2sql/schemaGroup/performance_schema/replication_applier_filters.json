@@ -1,0 +1,13 @@
+{
+  "replication_applier_filters": {
+    "primaryKey": [],
+    "columns": [
+      "CHANNEL_NAME",
+      "FILTER_NAME",
+      "FILTER_RULE",
+      "CONFIGURED_BY",
+      "ACTIVE_SINCE",
+      "COUNTER"
+    ]
+  }
+}

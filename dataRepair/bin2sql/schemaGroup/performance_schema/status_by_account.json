@@ -1,0 +1,11 @@
+{
+  "status_by_account": {
+    "primaryKey": [],
+    "columns": [
+      "USER",
+      "HOST",
+      "VARIABLE_NAME",
+      "VARIABLE_VALUE"
+    ]
+  }
+}

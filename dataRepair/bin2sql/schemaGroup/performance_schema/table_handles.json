@@ -1,0 +1,17 @@
+{
+  "table_handles": {
+    "primaryKey": [
+      "OBJECT_INSTANCE_BEGIN"
+    ],
+    "columns": [
+      "OBJECT_TYPE",
+      "OBJECT_SCHEMA",
+      "OBJECT_NAME",
+      "OBJECT_INSTANCE_BEGIN",
+      "OWNER_THREAD_ID",
+      "OWNER_EVENT_ID",
+      "INTERNAL_LOCK",
+      "EXTERNAL_LOCK"
+    ]
+  }
+}

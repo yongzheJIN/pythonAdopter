@@ -1,0 +1,14 @@
+{
+  "x$memory_by_thread_by_current_bytes": {
+    "primaryKey": [],
+    "columns": [
+      "thread_id",
+      "user",
+      "current_count_used",
+      "current_allocated",
+      "current_avg_alloc",
+      "current_max_alloc",
+      "total_allocated"
+    ]
+  }
+}
