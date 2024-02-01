@@ -48,3 +48,33 @@ python Adopter是基于Canal写的python版本，主要开发的功能如下:
 ### 如果你在数据融合时遇到什么特殊的情况，留言。我会根据场景的常见性把他加入到自己的功能模块中
 
 ### 现在只是测试版，会在2024年1月中旬放出正式版配合所有的参数说明，调试方法也放到了main.py里面了。
+### 额外功能说明:
+#### findDiffColumns.py - 找到目标表和源表字段不一样的地方
+<ol>
+    <li>
+    tableGroup ->定义哪些表需要检测
+    </li>
+    <li>
+findDiffernt(originHost="220.179.5.197",originPort=8689,originUser="root",originPassword="Zkxbx@2011",originDatabase="xex_plus",
+                 tableName=i,targetHost="220.179.5.197",targetPort=8689,targetUser="root",targetPassword="Zkxbx@2011",targetDatabase="civil_admin_aq")
+    定义源库和目标库的连接方式
+    </li>
+</ol>
+
+#### mapGeneration.py - 生成配置文件
+<ul>
+    <li>
+        
+        targetHost="220.179.5.197", //目标库连接方式
+        targetPort=8689,//目标库port
+        targetUser="root",//目标库账号
+        targetPassword="Zkxbx@2011", //目标库密码
+        targetDatabase="civil_admin_aq",//目标库名称
+        originHost="220.179.5.197", //源库链接方式
+        originPort=3306, //源库port
+        originUser="root", //源库User
+        originPassword="Zkxbx@2011", //源库密码
+        originDatabase="xex_plus", //源库名称
+        tables=["government_buys_services_apply"] //需要用到的表
+    </li>
+</ul>

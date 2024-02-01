@@ -44,7 +44,7 @@ class kafkaConnector:
                 'bootstrap.servers': f"{self.kakfkaHost}:{self.kafkaPort}",
                 'group.id': self.kafkaGroup,
                 # 每次都从offset的位置开始消费，而不是忘记消费失败数据
-                'auto.offset.reset': 'earliest',
+                'auto.offset.reset': 'latest',
                 # 不要自动提交事件
                 'enable.auto.commit': False,
             }

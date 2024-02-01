@@ -75,7 +75,7 @@ def __defaultInsertFunction(data, useReplace):
     resvalues = ""
     query_values = []
     for key, value in data['data']['after'].items():
-        rescolumns = rescolumns + key + ","
+        rescolumns = rescolumns + "`" +key + "`" + ","
         resvalues = resvalues + "%s,"
 
         # 如果值是 'NULL'，则将 None 添加到 query_values，否则添加原始值
@@ -145,7 +145,7 @@ def __defaultUpdateFunction(data, useReplace):
         query_values = []
         # 遍历形成columns的列表和values的%s
         for key, value in data['data']['after'].items():
-            rescolumns = rescolumns + key + ","
+            rescolumns = rescolumns + "`" +key + "`" + ","
             resvalues = resvalues + "%s,"
 
             # 如果值是 'NULL'，则将 None 添加到 query_values，否则添加原始值

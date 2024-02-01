@@ -1,5 +1,5 @@
 from dataFusion.mysqlConnector.mysqlConnector import mysqlConnector
-
+# 需要找到不同的表
 tableGroup = ['activity_manager', 'activity_person', 'activity_title', 'agency_reports', 'assets_info', 'bed',
                 'build_situation_info', 'building', 'card', 'card_type', 'detection_record', 'device',
                 'device_badge_msg', 'device_basic_msg', 'device_call_msg', 'device_door_msg', 'device_gas_msg',
@@ -39,6 +39,7 @@ def findDiffernt(originHost,originPort,originUser,originPassword,originDatabase,
         print(tableName,result)
 
 
+# 目标数据库连接方式，和源库连接方式
 for i in tableGroup:
     findDiffernt(originHost="220.179.5.197",originPort=8689,originUser="root",originPassword="Zkxbx@2011",originDatabase="xex_plus",
                  tableName=i,targetHost="220.179.5.197",targetPort=8689,targetUser="root",targetPassword="Zkxbx@2011",targetDatabase="civil_admin_aq")
