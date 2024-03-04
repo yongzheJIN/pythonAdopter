@@ -6,6 +6,7 @@ from confluent_kafka import Consumer, KafkaError
 from dataFusion.consumerConnector.common.commonFunction import organizedFunction
 # 数据库连接模块
 from dataFusion.mysqlConnector.mysqlConnector import mysqlConnector
+import datetime
 
 
 class kafkaConnector:
@@ -44,10 +45,11 @@ class kafkaConnector:
                 'bootstrap.servers': f"{self.kakfkaHost}:{self.kafkaPort}",
                 'group.id': self.kafkaGroup,
                 # 每次都从offset的位置开始消费，而不是忘记消费失败数据
-                'auto.offset.reset': 'latest',
+                'auto.offset.reset': 'earliest',
                 # 不要自动提交事件
                 'enable.auto.commit': False,
             }
+            print(consumer_conf)
             # 创建 Kafka 消费者
             self.kafkaConsumer = Consumer(consumer_conf)
             # 订阅主题
@@ -110,35 +112,25 @@ class kafkaConnector:
                     entryType = 2
                 elif originalDatas['type'] == "DELETE":
                     entryType = 3
+                elif originalDatas['type'] == "ALTER":
+                    entryType = 4
+                elif originalDatas['type'] == "CREATE" or originalDatas['type'] == 'ERASE':
+                    entryType = 5
                 else:
                     break
-                database = originalDatas['database']
-                table = originalDatas['table']
-                # 获取主键Dict
-                formdata["primary_List"] = [{"name": i, "value": originalDatas['data'][0][i]} for i in
-                                            originalDatas["pkNames"]]
-                # 组成before数据和after数据
-                formdata['after'] = {key: values if values != None else "NULL" for key, values in
-                                     originalDatas['data'][0].items()}
-                # 如果是更新,就要记录他之前的数据,如果不是直接设置为NONE,保持数据格式统一
-                if entryType == 2:
-                    formdata['before'] = {key: values if values != None else "NULL" for key, values in
-                                          originalDatas['data'][0].items()}
-                else:
-                    formdata['before'] = None
-                data = dict(
-                    database=database,
-                    table=table,
-                    event_type=entryType,
-                    data=formdata,
-                )
-                # 把insert,update和delete的逻辑都放在一起
-                res = organizedFunction(event_type=entryType, funcInsert=funcInsert, funcUpdate=funcUpdate,
-                                        funcDelete=funcDelete, table=table, InsertTableList=InsertTableList,
-                                        DeleteTableList=DeleteTableList, res=res,
-                                        data=data, useReplace=self.useReplace, mapAll=mapAll)
+                # 数据变更
+                data, table = self.resolvingDataStructure(originalDatas, formdata, entryType)
+                if entryType == 1 or entryType == 2 or entryType == 3:
+                    res = organizedFunction(event_type=entryType, funcInsert=funcInsert, funcUpdate=funcUpdate,
+                                            funcDelete=funcDelete, table=table, InsertTableList=InsertTableList,
+                                            DeleteTableList=DeleteTableList, res=res,
+                                            data=data, useReplace=self.useReplace, mapAll=mapAll)
+                elif entryType == 4 or entryType == 5:
+                    res.append([data, None])
+                # 表格变更
             if res:
                 try:
+                    print(res[-1])
                     # 传入数据，如果数据消费成功递交ack位置如果失败把mysqlConnector 和canalClient rollback
                     with mysqlConnector(ip=self.mysqlip, port=self.mysqlport, user=self.mysqluser,
                                         password=self.mysqlpassword,
@@ -148,20 +140,44 @@ class kafkaConnector:
                         for i in res:
                             cursor.execute(i[0], i[1])
                         connector.commit()
-                    # 成功之后递交我的ACK位置
+                    # # 成功之后递交我的ACK位置
                     self.kafkaConsumer.commit()
-                    print("事件提交成功", res)
+                    print(f"{datetime.datetime.now()}: 事件提交成功", res[-1])
                     continue
                 except Exception as e:
                     print("----------------")
                     print({f"失败：回滚时间轴。"
                            f"失败原因:{e}"
-                           f"失败sql组:{res}"
-                           f"失败sql:{i}"})
+                           f"{datetime.datetime.now()}失败sql:{1}"})
                     # 如果失败就停止程序
                     break
             time.sleep(1)
 
+    def resolvingDataStructure(self, originalDatas, formdata, entryType):
+        if entryType == 1 or entryType == 2 or entryType == 3:
+            database = originalDatas['database']
+            table = originalDatas['table']
+            # 获取主键Dict
+            formdata["primary_List"] = [{"name": i, "value": originalDatas['data'][0][i]} for i in
+                                        originalDatas["pkNames"]]
+            # 组成before数据和after数据
+            formdata['after'] = {key: values if values != None else "NULL" for key, values in
+                                 originalDatas['data'][0].items()}
+            # 如果是更新,就要记录他之前的数据,如果不是直接设置为NONE,保持数据格式统一
+            if entryType == 2:
+                formdata['before'] = {key: values if values != None else "NULL" for key, values in
+                                      originalDatas['data'][0].items()}
+            else:
+                formdata['before'] = None
+            data = dict(
+                database=database,
+                table=table,
+                event_type=entryType,
+                data=formdata,
+            )
+            return data, table
+        elif entryType == 4 or entryType == 5:
+            return originalDatas['sql'], originalDatas['table']
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.kafkaConsumer.close()

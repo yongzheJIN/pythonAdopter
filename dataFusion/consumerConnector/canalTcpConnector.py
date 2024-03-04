@@ -7,6 +7,7 @@ import time
 from dataFusion.consumerConnector.common.commonFunction import organizedFunction
 from dataFusion.mysqlConnector.mysqlConnector import mysqlConnector
 
+
 class canalConnector:
     def __init__(self, canalhost, canalport, canaltopic, canalgroup, mysqlip, mysqlport, mysqluser, mysqlpassword,
                  mysqlpdatabase, filterCondition, canalusername=None, canalpassword=None, useReplace=False):
@@ -53,7 +54,8 @@ class canalConnector:
             raise ConnectionError(f"连接canal_失败{e}")
 
     # 可以自己写自己内部的插入、更新和删除操作
-    def listenToPort(self, funcInsert=None, funcUpdate=None, funcDelete=None, useReplace=False, mapAll=False,schemaEvalution=False):
+    def listenToPort(self, funcInsert=None, funcUpdate=None, funcDelete=None, useReplace=False, mapAll=False,
+                     schemaEvalution=False):
         """
         event_type：1 insert 2 update 3 delete
         参数说明
@@ -98,14 +100,15 @@ class canalConnector:
                 header = entry.header
                 database = header.schemaName
                 table = header.tableName
-                if event_type==5 or event_type==4:
+                if event_type == 5 or event_type == 4:
                     if schemaEvalution:
-                        sql = row_change.sql.replace("\r","")
-                        sql = sql.replace("\n","")
+                        sql = row_change.sql.replace("\r", "")
+                        sql = sql.replace("\n", "")
                         # 立即进行schema演绎
                         with mysqlConnector(ip=self.mysqlip, port=self.mysqlport, user=self.mysqluser,
                                             password=self.mysqlpassword,
-                                            database=self.mysqldatabase if not mapAll else database,fixDatabase=True) as connector:
+                                            database=self.mysqldatabase if not mapAll else database,
+                                            fixDatabase=True) as connector:
                             # 制作cursor操作对象
                             cursor = connector.cursor()
                             cursor.execute(sql)
@@ -136,7 +139,7 @@ class canalConnector:
                         res = organizedFunction(event_type=event_type, funcInsert=funcInsert, funcUpdate=funcUpdate,
                                                 funcDelete=funcDelete, table=table, InsertTableList=InsertTableList,
                                                 DeleteTableList=DeleteTableList,
-                                                data=data, useReplace=self.useReplace, mapAll=mapAll,res=res)
+                                                data=data, useReplace=self.useReplace, mapAll=mapAll, res=res)
             if res:
                 try:
                     # 传入数据，如果数据消费成功递交ack位置如果失败把mysqlConnector 和canalClient rollback

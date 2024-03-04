@@ -2,6 +2,8 @@ import json
 
 from dataFusion.mysqlConnector.mysqlConnector import mysqlConnector
 
+client_id = "5faa4a732d8ec834f9d7dcea"
+
 
 class mapConfigGeneration:
     def __init__(self, targetHost: str, targetPort: int, targetUser: str, targetPassword: str, targetDatabase: str,
@@ -96,12 +98,12 @@ class mapConfigGeneration:
                 columns, primaryKey = self.getTableStructure(1, table)
                 for i in columns:
                     if i == "client_id" or i == "clientId" or i == "ClientId" or i == "Clientid":
-                        res[table]["data"][i] = "'6045b8e82d8ec86e9263ae14'"
+                        res[table]["data"][i] = "'" + client_id + "'"
                     else:
                         res[table]["data"][i] = i
                 for i in primaryKey:
                     if i == "client_id" or i == "clientId" or i == "ClientId" or i == "Clientid":
-                        res[table]["primaryKey"][i] = "'6045b8e82d8ec86e9263ae14'"
+                        res[table]["primaryKey"][i] = "'" + client_id + "'"
                     else:
                         res[table]["primaryKey"][i] = i
                 with open(f'..\\..\\config\\consumerConfig\\tableGroup\\{table}.json', 'w') as fp:
@@ -114,17 +116,19 @@ class mapConfigGeneration:
 
 if __name__ == "__main__":
     mapGeneratation = mapConfigGeneration(
-        targetHost="220.179.5.197",
-        targetPort=8689,
+        targetHost="120.71.147.86",
+        targetPort=3306,
         targetUser="root",
-        targetPassword="Zkxbx@2011",
-        targetDatabase="civil_admin_aq",
+        targetPassword="zkxbx@2011",
+        targetDatabase="civil_admin",
 
-        originHost="220.179.5.197",
+        originHost="120.71.147.86",
         originPort=3306,
         originUser="root",
-        originPassword="Zkxbx@2011",
-        originDatabase="xex_plus",
-        tables=["government_buys_services_apply"]
+        originPassword="zkxbx@2011",
+        originDatabase="xp86_behavior_assess",
+        tables=['xp86_bas_person', 'xp86_dep_department', 'xp86_dep_employee', 'xp86_evl_apply', 'xp86_evl_assess',
+                'xp86_iss_apply', 'xp86_iss_assess', 'xp86_ite_assess_template', 'xp86_nur_institution',
+                'xp86_tem_assess_templet']
     )
     mapGeneratation.generateFile(1)

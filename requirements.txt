@@ -3,7 +3,6 @@ canal-python==0.4
 confluent-kafka==2.3.0
 google==3.0.0
 kazoo==2.5.0
-mysql-replication==1.0.5
 packaging==23.2
 protobuf==3.20.1
 pykafka==2.8.0
