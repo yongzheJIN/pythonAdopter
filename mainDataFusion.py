@@ -19,7 +19,7 @@ if __name__ == "__main__":
                             mysqlpdatabase=mysqlConfig['database'], useReplace=wholeSetting['useReplace'],
                             kafkaConsumerModel=kafkaSetting.get("consumerModel", None)) as resummer:
             # 重写了INSERT和UPDATE Function
-            resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'])
+            resummer.listenToPort(funcInsert=None, funcUpdate=None, funcDelete=None, mapAll=wholeSetting['mapAll'],schemaEvalution=wholeSetting['schemaEvalution'])
     ### tcp配置
     elif wholeSetting["serviceModel"] == "tcp":
         print("开启TCP模式")

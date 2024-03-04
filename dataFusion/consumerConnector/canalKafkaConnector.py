@@ -60,7 +60,7 @@ class kafkaConnector:
             raise ConnectionError(f"连接kafka失败{e}")
 
     # 装饰器函数,让你可以自己写自己内部的插入和更新操作
-    def listenToPort(self, funcInsert, funcUpdate, funcDelete, mapAll: False):
+    def listenToPort(self, funcInsert, funcUpdate, funcDelete, mapAll: False, schemaEvalution:False):
         """
         参数说明
         funcInsert自己的Insert逻辑(会接受到event_type,header,database,table)
@@ -112,9 +112,9 @@ class kafkaConnector:
                     entryType = 2
                 elif originalDatas['type'] == "DELETE":
                     entryType = 3
-                elif originalDatas['type'] == "ALTER":
+                elif originalDatas['type'] == "ALTER" and schemaEvalution:
                     entryType = 4
-                elif originalDatas['type'] == "CREATE" or originalDatas['type'] == 'ERASE':
+                elif schemaEvalution and (originalDatas['type'] == "CREATE" or originalDatas['type'] == 'ERASE'):
                     entryType = 5
                 else:
                     break
@@ -125,7 +125,7 @@ class kafkaConnector:
                                             funcDelete=funcDelete, table=table, InsertTableList=InsertTableList,
                                             DeleteTableList=DeleteTableList, res=res,
                                             data=data, useReplace=self.useReplace, mapAll=mapAll)
-                elif entryType == 4 or entryType == 5:
+                elif schemaEvalution and (entryType == 4 or entryType == 5):
                     res.append([data, None])
                 # 表格变更
             if res:
