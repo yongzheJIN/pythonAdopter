@@ -130,7 +130,6 @@ class kafkaConnector:
                 # 表格变更
             if res:
                 try:
-                    print(res[-1])
                     # 传入数据，如果数据消费成功递交ack位置如果失败把mysqlConnector 和canalClient rollback
                     with mysqlConnector(ip=self.mysqlip, port=self.mysqlport, user=self.mysqluser,
                                         password=self.mysqlpassword,
