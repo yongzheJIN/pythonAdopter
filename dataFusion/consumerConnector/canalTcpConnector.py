@@ -101,18 +101,19 @@ class canalConnector:
                 database = header.schemaName
                 table = header.tableName
                 if event_type == 5 or event_type == 4:
-                    if schemaEvalution:
+                    if schemaEvalution and event_type==5:
+                        schema_name = row_change.ddlSchemaName
                         sql = row_change.sql.replace("\r", "")
                         sql = sql.replace("\n", "")
+                        sql = sql.replace(f"ALTER TABLE",f"ALTER TABLE `{schema_name}`.")
                         # 立即进行schema演绎
-                        with mysqlConnector(ip=self.mysqlip, port=self.mysqlport, user=self.mysqluser,
-                                            password=self.mysqlpassword,
-                                            database=self.mysqldatabase if not mapAll else database,
-                                            fixDatabase=True) as connector:
-                            # 制作cursor操作对象
-                            cursor = connector.cursor()
-                            cursor.execute(sql)
-                        # # 成功之后递交我的ACK位置
+                        res.append([sql,None])
+                    elif schemaEvalution and event_type==4:
+                        schema_name = row_change.ddlSchemaName
+                        sql = row_change.sql.replace("\r", "")
+                        sql = sql.replace("\n", "")
+                        sql = sql.replace(f"CREATE TABLE", f"ALTER TABLE `{schema_name}`.")
+                        res.append([sql, None])
                 else:
                     for row in row_change.rowDatas:
                         format_data = dict()

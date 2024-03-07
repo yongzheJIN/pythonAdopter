@@ -1,0 +1,9 @@
+# 前三步属于建议执行不属于必须执行（建立虚拟环境）
+1. 找到一个地方，这个地方就是你python虚拟环境的所有东西。
+2. 新建虚拟环境       python -m venv myenv
+这个myenv是你虚拟环境的名字，可以自定义。
+3. 新建好以后需要source一下虚拟环境bin文件件的activate。 例如source /myenv/bin/activate
+针对linux，如果是windows打开pycharm的同时他会自动source当前项目同路径下的虚拟环境，且windows可以通过界面操作。
+______________________________________________________________________________
+4. 然后更新          pip3 python pip3 install --upgrade pip
+5. pip install -i https://pypi.tuna.tsinghua.edu.cn/simple/ -r requirement.txt
