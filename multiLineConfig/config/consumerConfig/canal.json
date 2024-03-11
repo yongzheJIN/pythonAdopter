@@ -1,0 +1,7 @@
+{
+  "canalhost": "127.0.0.1",
+  "port": 11111,
+  "topic": "example",
+  "group": "1003",
+  "filterCondition": "xex_plus.*"
+}

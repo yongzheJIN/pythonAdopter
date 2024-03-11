@@ -12,7 +12,7 @@ import datetime
 class kafkaConnector:
     def __init__(self, kakfkaHost, kafkaPort, kafkaTopic, kafkaGroup, mysqlip, mysqlport, mysqluser, mysqlpassword,
                  mysqlpdatabase, useReplace, maxKafkaPollingSize=100, kafkaConsumerModel=1, mysqlread_timeout=20,
-                 kafkaCosumerModel="earliest"):
+                 kafkaCosumerModel="earliest",logger=None):
         ### kafka的设置
         self.kakfkaHost = kakfkaHost
         self.kafkaPort = kafkaPort
@@ -33,13 +33,14 @@ class kafkaConnector:
         self.mysqlpassword = mysqlpassword
         self.mysqldatabase = mysqlpdatabase
         self.useReplace = useReplace
+        self.logger=logger
 
     def __enter__(self):
         try:
             # 测试mysql的连接
             with mysqlConnector(ip=self.mysqlip, port=self.mysqlport, user=self.mysqluser, password=self.mysqlpassword,
                                 database=self.mysqldatabase):
-                print("连接mysql数据库成功")
+                print("连接mysql数据库成功") if self.logger==None else self.logger.info("连接mysql数据库成功")
             # 创建 Kafka 消费者配置
             consumer_conf = {
                 'bootstrap.servers': f"{self.kakfkaHost}:{self.kafkaPort}",
@@ -49,18 +50,17 @@ class kafkaConnector:
                 # 不要自动提交事件
                 'enable.auto.commit': False,
             }
-            print(consumer_conf)
             # 创建 Kafka 消费者
             self.kafkaConsumer = Consumer(consumer_conf)
             # 订阅主题
             self.kafkaConsumer.subscribe([self.kafkaTopic])
-            print("连接kafka成功")
+            print("连接kafka成功") if self.logger==None else self.logger.info("连接kafka成功")
             return self
         except Exception as e:
-            raise ConnectionError(f"连接kafka失败{e}")
+            raise ConnectionError(f"连接kafka失败{e}") if self.logger==None else self.logger.error(f"连接kafka失败{e}")
 
     # 装饰器函数,让你可以自己写自己内部的插入和更新操作
-    def listenToPort(self, funcInsert, funcUpdate, funcDelete, mapAll: False, schemaEvalution:False):
+    def listenToPort(self, funcInsert, funcUpdate, funcDelete, mapAll: False, schemaEvalution: False):
         """
         参数说明
         funcInsert自己的Insert逻辑(会接受到event_type,header,database,table)
@@ -87,7 +87,7 @@ class kafkaConnector:
                         # 没有更多的消息可消费，停止继续拉取
                         continue_polling = False
                     else:
-                        print(f"Error: {msg.error()}")
+                        print(f"Error: {msg.error()}") if self.logger == None else self.logger.error(f"Error: {msg.error()}")
                         break
                 else:
                     # ... 处理消息的逻辑
@@ -141,13 +141,15 @@ class kafkaConnector:
                         connector.commit()
                     # # 成功之后递交我的ACK位置
                     self.kafkaConsumer.commit()
-                    print(f"{datetime.datetime.now()}: 事件提交成功", res[-1])
+                    print(f"{datetime.datetime.now()}: 事件提交成功", res[-1]) if self.logger == None else self.logger.info(
+                        f"{datetime.datetime.now()}: 事件提交成功,{res[-1]}")
                     continue
                 except Exception as e:
-                    print("----------------")
                     print({f"失败：回滚时间轴。"
                            f"失败原因:{e}"
-                           f"{datetime.datetime.now()}失败sql:{1}"})
+                           f"{datetime.datetime.now()}失败sql:{i[0]}"}) if self.logger == None else self.logger.error({f"失败：回滚时间轴。"
+                                                                                                           f"失败原因:{e}"
+                                                                                                           f"{datetime.datetime.now()}失败sql:{i[0]}"})
                     # 如果失败就停止程序
                     break
             time.sleep(1)

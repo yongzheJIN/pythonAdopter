@@ -102,17 +102,15 @@ class canalConnector:
                 table = header.tableName
                 if event_type == 5 or event_type == 4:
                     if schemaEvalution and event_type==5:
-                        schema_name = row_change.ddlSchemaName
                         sql = row_change.sql.replace("\r", "")
                         sql = sql.replace("\n", "")
-                        sql = sql.replace(f"ALTER TABLE",f"ALTER TABLE `{schema_name}`.")
                         # 立即进行schema演绎
                         res.append([sql,None])
                     elif schemaEvalution and event_type==4:
                         schema_name = row_change.ddlSchemaName
                         sql = row_change.sql.replace("\r", "")
                         sql = sql.replace("\n", "")
-                        sql = sql.replace(f"CREATE TABLE", f"ALTER TABLE `{schema_name}`.")
+                        sql = sql.replace(f"CREATE TABLE", f"CREATE TABLE `{schema_name}`.")
                         res.append([sql, None])
                 else:
                     for row in row_change.rowDatas:
