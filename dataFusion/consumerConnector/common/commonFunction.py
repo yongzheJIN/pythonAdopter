@@ -248,7 +248,7 @@ def __defaultDeleteFunction(data):
     database = data['database']
     primary_list = data['data']['primary_List']
     table = data['table']
-    where_clasuse = ' AND '.join([f"‘{item['name']}’ = %s" for item in primary_list])
+    where_clasuse = ' AND '.join([f"`{item['name']}` = %s" for item in primary_list])
     delete_sql = f"DELETE from {database}.{table} where {where_clasuse};"
     return [delete_sql, [i['value'] for i in primary_list]]
 

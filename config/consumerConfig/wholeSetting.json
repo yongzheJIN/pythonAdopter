@@ -1,5 +1,5 @@
 {
-  "serviceModel": "kafka",
+  "serviceModel": "tcp",
   "useReplace": true,
   "mapAll": true,
   "schemaEvalution": true
