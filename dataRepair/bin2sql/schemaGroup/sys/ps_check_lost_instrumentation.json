@@ -1,9 +1,0 @@
-{
-  "ps_check_lost_instrumentation": {
-    "primaryKey": [],
-    "columns": [
-      "variable_name",
-      "variable_value"
-    ]
-  }
-}

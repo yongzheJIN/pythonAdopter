@@ -1,9 +1,0 @@
-{
-  "version": {
-    "primaryKey": [],
-    "columns": [
-      "sys_version",
-      "mysql_version"
-    ]
-  }
-}

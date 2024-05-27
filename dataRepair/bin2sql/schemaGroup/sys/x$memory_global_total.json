@@ -1,8 +1,0 @@
-{
-  "x$memory_global_total": {
-    "primaryKey": [],
-    "columns": [
-      "total_allocated"
-    ]
-  }
-}

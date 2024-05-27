@@ -1,8 +1,7 @@
 {
   "mapAll": 0,
-  "database": ["xex_plus"],
-  "table": "xex_plus.bill_detail",
-  "binLogFileName": "MS-LGYDPYKSLKYB-bin.000011",
-  "endTimestamp":1706565340,
-  "startTimeStamp": 1705467600
+  "database": ["data_repair"],
+  "binLogFileName": "mysql-bin.000010",
+  "endTimestamp":1717786853,
+  "startTimeStamp": 1715586853
 }

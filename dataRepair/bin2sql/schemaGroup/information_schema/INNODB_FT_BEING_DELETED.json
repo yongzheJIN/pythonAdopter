@@ -1,8 +1,0 @@
-{
-  "INNODB_FT_BEING_DELETED": {
-    "primaryKey": [],
-    "columns": [
-      "DOC_ID"
-    ]
-  }
-}

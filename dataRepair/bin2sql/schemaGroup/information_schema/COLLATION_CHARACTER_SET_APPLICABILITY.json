@@ -1,9 +1,0 @@
-{
-  "COLLATION_CHARACTER_SET_APPLICABILITY": {
-    "primaryKey": [],
-    "columns": [
-      "COLLATION_NAME",
-      "CHARACTER_SET_NAME"
-    ]
-  }
-}

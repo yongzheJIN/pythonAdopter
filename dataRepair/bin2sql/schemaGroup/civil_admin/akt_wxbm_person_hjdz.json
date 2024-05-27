@@ -1,9 +1,0 @@
-{
-  "akt_wxbm_person_hjdz": {
-    "primaryKey": [],
-    "columns": [
-      "person_identity",
-      "st_ga_area"
-    ]
-  }
-}

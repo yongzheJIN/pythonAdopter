@@ -8,7 +8,7 @@ from dataRepair.bin2sql.binlog2sqlUtilils import binlogUtilis
 from pymysqlreplication import BinLogStreamReader
 
 
-# 利用mysqlbinlog工具读取binlog信息转换成row模式的数据,并进行数据修复。
+# 利用mysql binlog工具读取binlog信息转换成row模式的数据,并进行数据修复。
 class binlogSQL:
     def __init__(self, port, ipAddress, userName, password, database, startTimeStamp, endTimeStamp, logFile):
         """
@@ -29,7 +29,7 @@ class binlogSQL:
         self.startFlag = False
         ## 验证数据库连接情况
         with mysqlConnector(ip=self.ipAddress, port=self.port, user=self.user, password=self.password,
-                            database=self.database) as connector:
+                            database=self.database):
             print("数据库连接方式验证成功")
 
     def getDCL(self):
@@ -42,34 +42,34 @@ class binlogSQL:
                     cursor = connector.cursor()
                     # 获取所有的库
                     cursor.execute("show databases")
-                    databaseList = cursor.fetchall()
-                    for j in databaseList:
+                    database_list = cursor.fetchall()
+                    for j in database_list:
                         # 获取所有的表
                         cursor.execute(f"use {j[0]}")
                         cursor.execute(f"show tables;")
-                        tableList = cursor.fetchall()
-                        for i in tableList:
+                        table_list = cursor.fetchall()
+                        for i in table_list:
                             self.writeTable(cursor, j[0], i[0])
             elif res['mapAll'] == 1:
                 with mysqlConnector(ip=self.ipAddress, port=self.port, user=self.user, password=self.password,
                                     database=self.database, fixDatabase=True) as connector:
                     cursor = connector.cursor()
                     try:
-                        databaseList = res["database"]
+                        database_list = res["database"]
                     except:
                         raise ResourceWarning("mapAll代表按照数据库过滤,那必须要需要配置database属性")
-                    for j in databaseList:
+                    for j in database_list:
                         # 获取所有的表
                         cursor.execute(f"use {j};show tables;")
-                        tableList = cursor.fetchall()
-                        for i in tableList:
+                        table_list = cursor.fetchall()
+                        for i in table_list:
                             self.writeTable(cursor, j, i[0])
             elif res['mapAll'] == 2:
-                tableList = res['tables']
+                table_list = res['tables']
                 with mysqlConnector(ip=self.ipAddress, port=self.port, user=self.user, password=self.password,
                                     database=self.database, fixDatabase=True) as connector:
                     cursor = connector.cursor()
-                    for i in tableList:
+                    for i in table_list:
                         i[0], i[1] = i.split(",")
                         self.writeTable(cursor=cursor, database=i[0], table=i[1])
 
@@ -92,7 +92,7 @@ class binlogSQL:
         with open(f".\\schemaGroup\\{database}\\{table}.json", 'w') as fp:
             json.dump(output, fp, indent=2)
 
-    def process_binlog(self):
+    def process_binlog(self, database, table):
         stream = BinLogStreamReader(
             connection_settings={'host': self.ipAddress, 'port': self.port, 'user': self.user, 'passwd': self.password,
                                  'charset': 'utf8'}, server_id=99,
@@ -102,10 +102,28 @@ class binlogSQL:
             if not self.startFlag:
                 if binlog_event.timestamp > self.startTimeStamp:
                     self.startFlag = True
+                    print("-------------开始")
             if binlog_event.timestamp > self.endTimeStamp:
                 break
-            if binlogUtilis.is_dml_event(binlog_event):
-                binlogUtilis.generate_sql_pattern(binlog_event)
+            types = binlogUtilis.is_dml_event(binlog_event)
+            # 1 代表他是DML事件，2 代表他是DDL事件
+            if types == 1 and self.startFlag:
+                result = binlogUtilis.generate_sql_pattern(binlog_event, database, table)
+                if result:
+                    try:
+                        with mysqlConnector(ip=self.ipAddress, port=self.port, user=self.user, password=self.password,
+                                            database=self.database) as connector:
+                            cursor = connector.cursor()
+                            cursor.execute(result)
+                    except Exception as e:
+                        raise TypeError(f"失败的timestamp:{binlog_event.timestamp},执行失败:{result}")
+            elif types == 2 and self.startFlag and binlog_event.schema.decode('utf-8') in database and not table:
+                # 如果是数据库DDL的话
+                with mysqlConnector(ip=self.ipAddress, port=self.port, user=self.user, password=self.password,
+                                    database=self.database) as connector:
+                    cursor = connector.cursor()
+                    cursor.execute([binlog_event.query])
+
         return True
 
     def create_unique_file(self, filename):
@@ -128,11 +146,25 @@ if __name__ == "__main__":
         startTimestamp = res['startTimeStamp']
         endTimeStamp = res['endTimestamp']
         logFile = res['binLogFileName']
-    sqlParser = binlogSQL(ipAddress="127.0.0.1", port=3306, userName="root", password="123456", database="xex_plus_qd",
+        database = res['database'] if 'database' in res else None
+        table = res['table'] if 'table' in res else None
+        if not database and not table:
+            raise ResourceWarning("database和table必须要有一个不是空值的，如果都不为空则采取table优先模式")
+
+    if table and database:
+        check_flag = input("因为database和table都不为空，所以采取table优先模式，是否继续(y/n):")
+        if check_flag == "n":
+            raise ResourceWarning("用户取消操作")
+    else:
+        check_flag = input("采取了table模式，是否继续(y/n):") if table else input("采取了database模式，是否继续(y/n):")
+        if check_flag == "n":
+            raise ResourceWarning("用户取消操作")
+
+    sqlParser = binlogSQL(ipAddress="127.0.0.1", port=3306, userName="root", password="Zkxbx@2011", database=database,
                           startTimeStamp=startTimestamp, endTimeStamp=endTimeStamp, logFile=logFile)
     # 先检查能不能成功创建Debzium一样的字段对应
     # sqlParser.getDCL()
     # sqlParser.read_binlog(r"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqlbinlog.exe",)
-    sqlParser.process_binlog()
+    sqlParser.process_binlog(database, table)
 
     # sqlParser.getDCL()

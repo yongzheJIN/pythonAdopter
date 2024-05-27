@@ -1,9 +1,0 @@
-{
-  "inform_read_status": {
-    "primaryKey": [],
-    "columns": [
-      "mid",
-      "uid"
-    ]
-  }
-}

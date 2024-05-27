@@ -16,6 +16,7 @@ class mysqlConnector:
         self.connector: pymysql.connect
         # 锁定数据库
         self.fixDatabase = fixDatabase
+        self.cursor = None
 
     # 确保连接的关闭
     def __enter__(self):
@@ -34,3 +35,6 @@ class mysqlConnector:
         if exc_type is not None:
             self.connector.rollback()
         self.connector.close()
+
+
+
