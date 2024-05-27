@@ -22,8 +22,9 @@ def handle_DCL(row_change, event_type, table):
         if schema_name not in sql:
             sql = sql.replace(f"ALTER TABLE", f"ALTER TABLE `{schema_name}`.", 1)
             sql = sql.replace(f"alter table", f"alter table `{schema_name}`.", 1)
+        if "RENAME" in sql:
+            sql = sql.replace(f"RENAME", f"RENAME `{schema_name}`.", 1)
     elif event_type == 4:
-
         if schema_name not in sql:
             sql = sql.replace(f"CREATE TABLE", f"CREATE TABLE `{schema_name}`.", 1)
             sql = sql.replace(f"create table", f"create table `{schema_name}`.", 1)
