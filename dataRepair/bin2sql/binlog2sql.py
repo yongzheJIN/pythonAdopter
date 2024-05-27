@@ -163,8 +163,5 @@ if __name__ == "__main__":
     sqlParser = binlogSQL(ipAddress="127.0.0.1", port=3306, userName="root", password="Zkxbx@2011", database=database,
                           startTimeStamp=startTimestamp, endTimeStamp=endTimeStamp, logFile=logFile)
     # 先检查能不能成功创建Debzium一样的字段对应
-    # sqlParser.getDCL()
-    # sqlParser.read_binlog(r"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqlbinlog.exe",)
+    sqlParser.getDCL()
     sqlParser.process_binlog(database, table)
-
-    # sqlParser.getDCL()
