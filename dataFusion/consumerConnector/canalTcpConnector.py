@@ -8,6 +8,73 @@ from dataFusion.consumerConnector.common.commonFunction import organizedFunction
 from dataFusion.mysqlConnector.mysqlConnector import mysqlConnector
 
 
+def handle_DCL(row_change, event_type, table):
+    """
+    row_change
+    event_type: sql的类型 4->CREATE,5->ALTER,6->DROP
+    table: 表名
+    处理canal直接处理的DCL存在的问题，并返回sql:str
+    """
+    sql = row_change.sql.replace("\r", "")
+    sql = sql.replace("\n", "")
+    schema_name = row_change.ddlSchemaName
+    if event_type == 5:
+        if schema_name not in sql:
+            sql = sql.replace(f"ALTER TABLE", f"ALTER TABLE `{schema_name}`.", 1)
+            sql = sql.replace(f"alter table", f"alter table `{schema_name}`.", 1)
+    elif event_type == 4:
+
+        if schema_name not in sql:
+            sql = sql.replace(f"CREATE TABLE", f"CREATE TABLE `{schema_name}`.", 1)
+            sql = sql.replace(f"create table", f"create table `{schema_name}`.", 1)
+    elif event_type == 6:
+        if schema_name not in sql:
+            if "`{table}`" in sql:
+                sql = sql.replace(f"`{table}`", f"`{schema_name}`.`{table}`", 1)
+            else:
+                sql = sql.replace(f"{table}", f"`{schema_name}`.`{table}`", 1)
+    return sql
+
+
+def handle_DML(row_change, data, useReplace, mapAll, funcDelete, funcInsert, funcUpdate, InsertTableList,
+               DeleteTableList, res):
+    """
+    处理canal获取的DML语句
+    参数说明:
+    row_change:{"before":{"name":"1"},"after":{"name":"2"}}
+    data:{database=database,table=table,event_type=event_type}
+    useReplace:是否采用replace来替换所有的insert和update
+    funcDelete:自定义的funcDelete语句
+    funcInsert: 自定义的funcInsert语句
+    funcUpdate:自定义的funcUpdate语句
+    InsertTable和DeleteTableList:是为了实现同表的insert的和delete全部放在一起。
+    额外:
+    event_type：1->Insert,2->update,3->delete。因为处理逻辑比较复杂因此推到organizaedFunction里面处理
+    """
+    format_data = dict()
+    format_data['before'] = format_data['after'] = dict()
+    format_data['primary_List'] = []
+    for row in row_change.rowDatas:
+        # 获取数据修改前的完整要素
+        for column in row.beforeColumns:
+            format_data['before'][column.name] = column.value
+            # 获取primaryKey List
+            if column.isKey:
+                format_data['primary_List'].append({"name": column.name,
+                                                    "value": column.value})
+        # 获取数据修改后的完整要素
+        for column in row.afterColumns:
+            format_data['after'][column.name] = column.value if not column.isNull else 'NULL'
+    # 把数据组装起来传入处理逻辑
+    data['data'] = format_data
+    # 把insert,update和delete的逻辑都放在一起
+    res = organizedFunction(event_type=data['event_type'], funcInsert=funcInsert, funcUpdate=funcUpdate,
+                            funcDelete=funcDelete, table=data['table'], InsertTableList=InsertTableList,
+                            DeleteTableList=DeleteTableList,
+                            data=data, useReplace=useReplace, mapAll=mapAll, res=res)
+    return res
+
+
 class canalConnector:
     def __init__(self, canalhost, canalport, canaltopic, canalgroup, mysqlip, mysqlport, mysqluser, mysqlpassword,
                  mysqlpdatabase, filterCondition, canalusername=None, canalpassword=None, useReplace=False):
@@ -100,61 +167,20 @@ class canalConnector:
                 header = entry.header
                 database = header.schemaName
                 table = header.tableName
-                # 4-create table; 5-alter table; 6-drop table
-                if event_type == 5 or event_type == 4 or event_type == 6:
-                    if schemaEvalution and event_type == 5:
-                        schema_name = row_change.ddlSchemaName
-                        sql = row_change.sql.replace("\r", "")
-                        sql = sql.replace("\n", "")
-                        if schema_name not in sql:
-                            sql = sql.replace(f"ALTER TABLE", f"ALTER TABLE `{schema_name}`.", 1)
-                            sql = sql.replace(f"alter table", f"alter table `{schema_name}`.", 1)
-                        res.append([sql, None])
-                    elif schemaEvalution and event_type == 4:
-                        schema_name = row_change.ddlSchemaName
-                        sql = row_change.sql.replace("\r", "")
-                        sql = sql.replace("\n", "")
-                        if schema_name not in sql:
-                            sql = sql.replace(f"CREATE TABLE", f"CREATE TABLE `{schema_name}`.", 1)
-                            sql = sql.replace(f"create table", f"create table `{schema_name}`.", 1)
-                        res.append([sql, None])
-                    elif schemaEvalution and event_type == 6:
-                        schema_name = row_change.ddlSchemaName
-                        sql = row_change.sql.replace("\r", "")
-                        sql = sql.replace("\n", "")
-                        if schema_name not in sql:
-                            sql = sql.replace(f"DROP TABLE", f"DROP TABLE `{schema_name}`.", 1)
-                            sql = sql.replace(f"drop table", f"drop table `{schema_name}`.", 1)
-                        res.append([sql, None])
+                # DCL
+                if event_type in [4, 5, 6]:
+                    res.append(handle_DCL(row_change, event_type, table))
+                # DML
+                elif event_type in [1, 2, 3]:
+                    basic_data = dict(
+                        database=database,
+                        table=table,
+                        event_type=event_type
+                    )
+                    res = handle_DML(row_change=row_change, data=basic_data, useReplace=self.useReplace, mapAll=mapAll,
+                                     funcDelete=funcDelete, funcInsert=funcInsert, funcUpdate=funcUpdate,
+                                     InsertTableList=InsertTableList, DeleteTableList=DeleteTableList, res=res)
 
-
-                else:
-                    for row in row_change.rowDatas:
-                        format_data = dict()
-                        format_data['before'] = format_data['after'] = dict()
-                        format_data['primary_List'] = []
-                        # 获取数据修改前的完整要素
-                        for column in row.beforeColumns:
-                            format_data['before'][column.name] = column.value
-                            # 获取primaryKey List
-                            if column.isKey == True:
-                                format_data['primary_List'].append({"name": column.name,
-                                                                    "value": column.value})
-                        # 获取数据修改后的完整要素
-                        for column in row.afterColumns:
-                            format_data['after'][column.name] = column.value if column.isNull == False else 'NULL'
-                        # 把数据组装起来传入处理逻辑
-                        data = dict(
-                            database=database,
-                            table=table,
-                            event_type=event_type,
-                            data=format_data,
-                        )
-                        # 把insert,update和delete的逻辑都放在一起
-                        res = organizedFunction(event_type=event_type, funcInsert=funcInsert, funcUpdate=funcUpdate,
-                                                funcDelete=funcDelete, table=table, InsertTableList=InsertTableList,
-                                                DeleteTableList=DeleteTableList,
-                                                data=data, useReplace=self.useReplace, mapAll=mapAll, res=res)
             if res:
                 try:
                     # 传入数据，如果数据消费成功递交ack位置如果失败把mysqlConnector 和canalClient rollback

@@ -1,6 +1,7 @@
 import json
 from dataFusion.consumerConnector.canalKafkaConnector import kafkaConnector
 from dataFusion.consumerConnector.canalTcpConnector import canalConnector
+import os
 
 if __name__ == "__main__":
     ### kafka的配置
