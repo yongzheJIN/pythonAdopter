@@ -8,13 +8,12 @@ from dataFusion.mysqlConnector.mysqlConnector import mysqlConnector
 INSERT_SQLS_LOCK = threading.Lock()
 
 class MysqlTransactionInsert:
-    def __init__(self, ip: str, port: int, user: str, password: str, databaseList: list):
+    def __init__(self, ip: str, port: int, user: str, password: str):
         """
         :param ip: mysql的ip
         :param port: mysql的端口
         :param user: mysql的用户名
         :param password: mysql的密码
-        :param databaseList: 需要迁移的数据库列表
         """
         self.ip = ip
         self.port = port
@@ -27,29 +26,36 @@ class MysqlTransactionInsert:
         多线程插入数据
         """
         # 多线程插入
+        import datetime
+        start = datetime.datetime.now()
         with ThreadPoolExecutor(max_workers=work_num) as executor:
             futures = []
             while INSERT_SQLS:
                 sql = INSERT_SQLS[0]
                 with INSERT_SQLS_LOCK:
                     INSERT_SQLS.pop(0)
-            futures.append(executor.submit(self.insert, sql))
-            for future in futures:
+                futures.append((sql,executor.submit(self.insert, sql)))
+            for sql,future in tqdm.tqdm(futures):
                 try:
                     future.result()
                 except Exception as e:
-                    print(f"Error occurred while inserting data: {e}")
+                    print(f"Error occurred while inserting data:{sql}")
+
+    def build(self,table_construction_sql):
+        """
+        建表
+        """
+        with mysqlConnector(ip=self.ip, port=self.port, user=self.user,
+                            password=self.password, database=None) as connector:
+            cursor = connector.cursor()
+            for table in table_construction_sql:
+                cursor.execute(table)
+                connector.commit()
 
     def insert(self, sql):
         # 插入数据
-        print(1)
-        # with mysqlConnector(ip=self.ip, port=self.port, user=self.user,
-        #                     password=self.password, database=None) as connector:
-        #     cursor = connector.cursor()
-        #     cursor.execute(sql[0], sql[1])
-        #     connector.commit()
-        # with mysqlConnector(ip=self.ip, port=self.port, user=self.user,
-        #                     password=self.password,database=None) as connector:
-        #     cursor = connector.cursor()
-        #     cursor.execute(sql[0], sql[1])
-        #     connector.commit()
+        with mysqlConnector(ip=self.ip, port=self.port, user=self.user,
+                            password=self.password, database=None) as connector:
+            cursor = connector.cursor()
+            cursor.execute(sql[0], sql[1])
+            connector.commit()
