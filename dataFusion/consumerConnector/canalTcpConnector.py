@@ -30,7 +30,7 @@ def handle_DCL(row_change, event_type, table):
             sql = sql.replace(f"create table", f"create table `{schema_name}`.", 1)
     elif event_type == 6:
         if schema_name not in sql:
-            if "`{table}`" in sql:
+            if f"`{table}`" in sql:
                 sql = sql.replace(f"`{table}`", f"`{schema_name}`.`{table}`", 1)
             else:
                 sql = sql.replace(f"{table}", f"`{schema_name}`.`{table}`", 1)

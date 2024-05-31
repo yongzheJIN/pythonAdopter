@@ -1,4 +1,4 @@
-# Python Adopter 数据一体机（数据全量、数据增量、数据修复）
+﻿# Python Adopter 数据一体机（数据全量、数据增量、数据修复）
 
 ## 功能
 python Adopter是基于Canal写的python版本，主要开发的功能如下:
@@ -19,6 +19,14 @@ python Adopter是基于Canal写的python版本，主要开发的功能如下:
 在pythonAdopter目录下执行以下命令<br/>
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple/ -r requirement.txt<br/>
 linux pip替换成pip3
+## 运行
+<ul>
+    <li>数据融合：python mainDataFusion.py。</li>
+    <li>binlog数据修复：python mainDataRepair_binlog。</li>
+    <li>多任务数据融合：python mutliLineDataFusion.py。</li>
+</ul>
+
+
 ## 优势
 
 优势在于:
